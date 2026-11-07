@@ -1,0 +1,11 @@
+# Swarm hackathon — pod deps (Linux + CUDA, 24 GB card).
+# No vLLM: HFModel does generation AND activation capture with one
+# transformers model per turn, so the old vllm/HF co-residency problem
+# (see ais-research requirements) does not exist here.
+# torch ships with the RunPod PyTorch template — do not pin it.
+transformers>=4.51     # Qwen3 support landed in 4.51
+accelerate             # device_map="cuda"
+numpy<3
+scikit-learn==1.7.2    # probe training (matches prior pipeline)
+matplotlib             # figures
+huggingface_hub[cli]
