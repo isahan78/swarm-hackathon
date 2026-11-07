@@ -34,16 +34,19 @@ If the probe ties or loses to the transcript monitor in BOTH latent and hidden
   reasoning about the marker, probe drifts toward chance. (confidence: low — genuinely uncertain)
 - Overall: expect the headline to come from LATENT, not hidden.
 
-## Owner's sealed forecast  (FILL IN, then commit)
-- Overt:
-- Latent:
-- Hidden:
-- Overall:
+## Owner's sealed forecast  (sealed 2026-11-07, before any condition-level results)
+- Overt: probe does NOT beat the transcript monitor here.
+- Latent: probe fires more than 2 steps before the transcript reveals — predicts ~4 steps.
+- Hidden: probe catches it partly.
+- Overall: the headline should come from HIDDEN.
+
+(Disagreement on record: Tyler predicts the headline from LATENT with a 1-2 step lead;
+owner predicts HIDDEN with a ~4-step latent lead. The data decides.)
 
 ## Design knobs frozen at seal time (change only with a logged note)
-- Layer for probe readout: ____ (a priori or inner-CV, never selected on test)
+- Layer for probe readout: 18 (a priori: mid-stack; the smoke test's default)
 - Pooling: last-token (variant: mean-over-action-tokens)
-- Episodes per condition: ____   FPR for "detection": 2%
+- Episodes per condition: ~100 (budget-sized from smoke timing)   FPR for "detection": 2%
 - Held-out split: by objective/task
 
 ## Deviations log
