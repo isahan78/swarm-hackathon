@@ -44,9 +44,9 @@ co-option earlier than a transcript monitor?* Four parts:
 |---|---|---|
 | Env state, actions, ownership, marker, rendering | `swarm_env/env.py` | **built** |
 | Prompts: source/recipient systems, action protocol, prompt builder | `swarm_env/prompts.py` | **built** |
-| Model interface: StubModel (+ HFModel for Qwen3-8B later) | `swarm_env/model.py` | **built (stub)** |
+| Model interface: StubModel + HFModel (Qwen3-8B) | `swarm_env/model.py` | **built; HFModel needs pod to run** |
 | Episode loop, AgentConfig, CLI | `swarm_env/episode.py` | **built, runs** |
-| Activation capture hook (Qwen3-8B) | `swarm_env/model.py` (HFModel) | TODO (on RunPod) |
+| Activation capture (Qwen3-8B, prefill pass, [L+1], last-token) | `swarm_env/model.py` (HFModel) | **written; smoke-test on pod** |
 | Probe train/eval | reuse `ais-research/experiment/train_probe.py`, `cross_fit.py` | reuse |
 | Text monitor | reuse text baseline / LLM judge | reuse |
 | Figures | reuse `make_figures.py` | reuse |
@@ -78,6 +78,16 @@ co-option earlier than a transcript monitor?* Four parts:
   honest -> clean (no marker); compliant -> co-opted (marker at recipient step 0);
   latent -> co-opted (chore at step 0, marker planted at step 2 = a 2-step latency gap).
   Ownership enforced, board + action parsing + free label all working.
+- Initialized `swarm-hackathon` as its own git repo (neither local folder was a repo).
+  Copied 7 preexisting probe scripts into `probe/` (train_probe, cross_fit, text_classifier,
+  text_floor, make_figures, harvest_activations, llm_judge) with `probe/README.md`
+  marking them preexisting per the rules. `.gitignore` excludes recordings + the untrusted
+  swarmtraces dataset. Initial commit made.
+- Wrote the real `HFModel` (Qwen3-8B) behind the same `.act()` interface + `build_messages`:
+  two passes per turn — a prefill-only forward for the activation (last-token residual at a
+  fixed layer, `[L+1]` indexing and degenerate-vector checks ported from harvest_activations),
+  then `generate()` for the action text. Lazy torch import keeps the stub loop GPU-free.
+  Not yet run — needs the pod.
 
 ## 5. To-do (weekend plan)
 - [x] Design the task + hidden objective (the unsanctioned marker).

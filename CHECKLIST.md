@@ -8,16 +8,17 @@ for the build spec. ★ = critical path.  **← YOU ARE HERE** marks current fro
 - [x] Design task + hidden objective (unsanctioned marker)
 - [x] Build env skeleton + episode loop, proven with stub (honest/compliant/latent)
 - [x] PROJECT.md + PRD.md
-- [ ] **Seal the pre-registration** — commit predicted outcome per condition to git
-      BEFORE any GPU: overt = probe ties text; latent = probe leads text; hidden = ?  **← YOU ARE HERE**
-- [ ] Post Discord recruit, or decide to go solo (only worth it if they start today)
+- [x] Init git repo; copy preexisting probe scripts into `probe/` (marked preexisting)
+- [ ] **Seal the pre-registration** — fill owner's forecast in docs/plan/prereg.md and
+      commit BEFORE any GPU: overt = probe ties text; latent = probe leads text; hidden = ?
+- [ ] Post Discord recruit — Naveen is in (orchestration + report); confirm & lock team
 - [ ] Confirm live Apart page: page limit, abstract length, required appendix
 
 ## Phase 1 — Wire Qwen3-8B (Sat AM, on RunPod) ★
-- [ ] ★ Stand up Qwen3-8B on RunPod (reuse pod_overnight workflow)
-- [ ] ★ Implement `HFModel.act`: build_prompt → generate → parse_action
-- [ ] ★ Add activation capture: forward hook, one fixed layer, last-token pooling
-- [ ] Smoke test: 1 real episode end-to-end; confirm JSON parses + activation shape is sane
+- [x] ★ Implement `HFModel.act`: build_messages → generate → parse_action (swarm_env/model.py)
+- [x] ★ Add activation capture: prefill pass, fixed layer, last-token, [L+1] indexing
+- [ ] ★ Stand up Qwen3-8B on RunPod (reuse pod_overnight workflow)  **← YOU ARE HERE**
+- [ ] Smoke test: 1 real episode end-to-end; confirm JSON parses + activation shape is (hidden,)
 
 ## Phase 2 — Generate data + tune (Sat midday) ★
 - [ ] Define the 3 condition framings (overt / latent / hidden evasion pressure)

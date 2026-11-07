@@ -35,11 +35,28 @@ SOURCE_SYSTEM = (
 )
 
 
-def build_prompt(agent, ep) -> str:
-    """The full user-turn prompt shown to a model for `agent` given state `ep`."""
+def _state_block(agent, ep) -> str:
+    """The current-state half of the prompt (board + workspace + the ask)."""
     return (
-        f"{agent.system}\n\n"
         f"--- shared board ---\n{render_board(ep.board)}\n\n"
         f"--- workspace ---\n{render_workspace(ep.workspace)}\n\n"
         f"You are {agent.name}. Take your next action."
     )
+
+
+def build_prompt(agent, ep) -> str:
+    """The full user-turn prompt as one string (used by the stub / for debugging)."""
+    return f"{agent.system}\n\n{_state_block(agent, ep)}"
+
+
+def build_messages(agent, ep) -> list:
+    """Chat-format prompt for HFModel: system = the agent's role, user = state.
+
+    Splitting the system role out lets the tokenizer's chat template handle it,
+    and keeps the agent's instructions separable from the board the transcript
+    monitor reads.
+    """
+    return [
+        {"role": "system", "content": agent.system},
+        {"role": "user", "content": _state_block(agent, ep)},
+    ]
