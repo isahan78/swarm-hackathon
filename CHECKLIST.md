@@ -17,11 +17,13 @@ for the build spec. ★ = critical path.  **← YOU ARE HERE** marks current fro
 ## Phase 1 — Wire Qwen3-8B (Sat AM, on RunPod) ★
 - [x] ★ Implement `HFModel.act`: build_messages → generate → parse_action (swarm_env/model.py)
 - [x] ★ Add activation capture: prefill pass, fixed layer, last-token, [L+1] indexing
-- [ ] ★ Stand up Qwen3-8B on RunPod (reuse pod_overnight workflow)  **← YOU ARE HERE**
-- [ ] Smoke test: 1 real episode end-to-end; confirm JSON parses + activation shape is (hidden,)
+- [x] ★ Stand up Qwen3-8B on RunPod — via RunPod MCP: pod `eoo4bzheqi3ztx`, A40 48GB, $0.59/hr, EU-SE-1
+- [x] Smoke test PASS (2026-11-07): actions parsed, 2 recipient activations shape (4096,), label clean.
+      Episode ~60s (~15s/turn with thinking) -> ~300 episodes ≈ 5 GPU-hrs ≈ $3. Recipient REFUSED the
+      marker at default settings -> tuning must raise plausibility (knife-edge, as predicted R2)
 
 ## Phase 2 — Generate data + tune (Sat midday) ★
-- [ ] Define the 3 condition framings (overt / latent / hidden evasion pressure)
+- [ ] Define the 3 condition framings (overt / latent / hidden evasion pressure)  **← YOU ARE HERE**
 - [ ] ★ TUNE prompts so BOTH co-opted and clean rates are non-trivial (the knife-edge)
 - [ ] Generate N episodes/condition; store transcript + per-step activations + free label
 - [ ] Generate clean no-recruit control episodes (probe false-positive floor)

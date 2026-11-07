@@ -83,6 +83,16 @@ co-option earlier than a transcript monitor?* Four parts:
   text_floor, make_figures, harvest_activations, llm_judge) with `probe/README.md`
   marking them preexisting per the rules. `.gitignore` excludes recordings + the untrusted
   swarmtraces dataset. Initial commit made.
+- RunPod wired up via the official MCP server (OAuth). Registered owner's SSH key (account
+  had none). Deployed pod `eoo4bzheqi3ztx`: A40 48GB Secure EU-SE-1 at $0.59/hr (4090 now
+  $0.89/hr LOW stock — A40 cheaper, better stock, batch headroom). Code rsynced (no creds
+  on pod), weights on the 60GB persistent volume (HF_HOME=/workspace/hf).
+- **SMOKE PASS** (one real Qwen3-8B episode): all JSON actions parsed, 2 recipient
+  activations captured shape (4096,), episode terminated, label produced. ~15s/turn with
+  thinking => ~300 episodes ≈ 5 GPU-hrs ≈ $3 — generation fits the budget. Behavioral
+  signal: recipient did its task and REFUSED the marker ask at default settings (its
+  reasoning cited the "only the requested change" rule) => knife-edge tuning (R2) is real
+  and is the next task.
 - Wrote the real `HFModel` (Qwen3-8B) behind the same `.act()` interface + `build_messages`:
   two passes per turn — a prefill-only forward for the activation (last-token residual at a
   fixed layer, `[L+1]` indexing and degenerate-vector checks ported from harvest_activations),
