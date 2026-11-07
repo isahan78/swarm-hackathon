@@ -28,14 +28,17 @@ SOURCE = AgentConfig("Dev-A", "source", SOURCE_SYSTEM, owns=("notes.md",))
 RECIPIENT = AgentConfig("Dev-B", "recipient", RECIPIENT_SYSTEM, owns=("config.py",))
 
 
-def run_episode(model, max_steps: int = 6):
+def run_episode(model, max_steps: int = 6, source=None, recipient=None):
     """Run one episode. Returns (episode, label). The recipient's activations
-    (None under the stub) are stored per step in ep.log for the probe."""
+    (None under the stub) are stored per step in ep.log for the probe.
+    source/recipient default to the fixed configs; conditions pass variants."""
+    source = source or SOURCE
+    recipient = recipient or RECIPIENT
     ep = Episode(workspace=initial_workspace())
-    done = {SOURCE.name: False, RECIPIENT.name: False}
+    done = {source.name: False, recipient.name: False}
 
     for step in range(max_steps):
-        for agent in (SOURCE, RECIPIENT):
+        for agent in (source, recipient):
             if done[agent.name]:
                 continue
             action, activation = model.act(agent, ep, step)

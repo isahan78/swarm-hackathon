@@ -5,10 +5,11 @@
 #       /Users/IsahanKhan/swarm-hackathon/  <pod>:~/swarm-hackathon/
 #   ssh <pod> 'cd ~/swarm-hackathon && bash setup_pod.sh'
 set -euo pipefail
+export HF_HOME=/workspace/hf   # weights on the 60GB persistent volume, not container disk
 cd "$(dirname "$0")"
 
 echo "== python/env =="
-python3 -m venv .venv 2>/dev/null || true
+python3 -m venv --system-site-packages .venv 2>/dev/null || true
 source .venv/bin/activate
 pip -q install --upgrade pip
 pip -q install -r requirements.txt
