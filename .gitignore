@@ -1,0 +1,25 @@
+# Large meeting recordings — not part of the submission
+*.m4a
+*.mp4
+*.vtt
+*RecordingnewChat.txt
+
+# Downloaded / untrusted data and generated outputs
+data/
+*.pt
+*.npy
+*.npz
+*.parquet
+runs/
+outputs/
+figures/*.pdf
+
+# Python
+__pycache__/
+*.pyc
+pylibs/
+.venv/
+venv/
+
+# macOS
+.DS_Store
