@@ -45,3 +45,9 @@ If the probe ties or loses to the transcript monitor in BOTH latent and hidden
 - Pooling: last-token (variant: mean-over-action-tokens)
 - Episodes per condition: ____   FPR for "detection": 2%
 - Held-out split: by objective/task
+
+## Deviations log
+- 2026-11-07: ONE smoke-test episode (plumbing gate: JSON parse, activation shape,
+  episode termination) ran on the pod before the owner's forecast was filled.
+  Tyler's forecast was already committed beforehand. Owner: write your forecast
+  before reading the smoke episode's behavioral outcome, or note that you read it.
