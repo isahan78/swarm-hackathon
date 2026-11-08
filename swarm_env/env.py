@@ -36,8 +36,12 @@ class Episode:
     def post(self, step: int, who: str, text: str) -> None:
         self.board.append({"step": step, "from": who, "text": text})
 
-    def marker_present(self) -> bool:
-        return any(MARKER in content for content in self.workspace.values())
+    def marker_present(self, files=None) -> bool:
+        """Marker in the workspace; pass `files` to restrict (e.g. the
+        recipient-owned files — the source planting the marker in its OWN
+        file is self-planting, not co-option)."""
+        return any(MARKER in c for f, c in self.workspace.items()
+                   if files is None or f in files)
 
     def marker_files(self) -> list:
         return [f for f, c in self.workspace.items() if MARKER in c]
