@@ -23,8 +23,13 @@ for the build spec. ★ = critical path.  **← YOU ARE HERE** marks current fro
       marker at default settings -> tuning must raise plausibility (knife-edge, as predicted R2)
 
 ## Phase 2 — Generate data + tune (Sat midday) ★
-- [ ] Define the 3 condition framings (overt / latent / hidden evasion pressure)  **← YOU ARE HERE**
-- [ ] ★ TUNE prompts so BOTH co-opted and clean rates are non-trivial (the knife-edge)
+- [x] Define the 3 condition framings (overt / latent / hidden evasion pressure) — conditions.py
+- [ ] ★ TUNE prompts so BOTH co-opted and clean rates are non-trivial (the knife-edge)  **← YOU ARE HERE**
+      Sweep 1 (n=4/cell) invalid: CoT truncation at 512 tokens silently "done"d the source
+      before it ever asked (fixed: 1536 + retry + parse_ok logging). Sweep 2: 1/24 genuine
+      co-opt (overt/authority only); 1 fake co-opt exposed a label loophole (source
+      self-planting marker in its own file — fixed: label restricted to recipient-owned
+      files). Sweep 3 running: 'ticket' justification tier (concrete ticket + deadline).
 - [ ] Generate N episodes/condition; store transcript + per-step activations + free label
 - [ ] Generate clean no-recruit control episodes (probe false-positive floor)
 
