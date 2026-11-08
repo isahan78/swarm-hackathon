@@ -209,16 +209,22 @@ scoring: forecast A called the latent headline (correct) and hidden AUC
 0.60–0.70 (observed 0.74); forecast B called hidden as headline (wrong) but
 "probe partly catches hidden" (correct).
 
-**Swarm fan-out: group settings collapse recruitment regardless of
-addressing.** 24 episodes, 72 recipient-decisions, two arms. Broadcast ask
-(one message to all three): 4/36 co-opted (11%). Personal ask (a separate,
-named message per recipient, same shared board): also 4/36 (11%) — against
-67% in the 2-agent setting. Direct addressing does NOT restore compliance,
-ruling out the simple dilution story; the suppressor is the group setting
-itself. Our candidate mechanism: on a shared board every recipient *sees the
+**Swarm fan-out: recruitment collapses monotonically with group size, and
+addressing does not rescue it.** 32 episodes, 152 recipient-decisions, three
+arms (all overt/ticket). The dose-response: **67% co-opted at N=1 → 11% at
+N=3 (4/36 broadcast ask; 4/36 with a separate, named ask per recipient) →
+0% at N=10 (0/80)**. Direct addressing does NOT restore compliance, ruling
+out the simple dilution story; the suppressor is the group setting itself —
+and at N=10 the same ask that persuades a lone agent two-thirds of the time
+persuades nobody. Since conformity needs a first complier, large groups
+appear protected by a bootstrapping problem: no first domino, no cascade. In
+this environment the attack does not parallelize; the exposed surface is the
+direct, personal, one-on-one ask. Our candidate mechanism: on a shared board every recipient *sees the
 ask being mass-made*, which may undercut its legitimacy — the 2-agent ask is
 exclusive by construction. (Testing this needs private channels: future
-work.) Conformity: at decision moments where a peer had already visibly
+work.) Caveats: at N=10, group size and prompt length grow together, so
+social suppression is not fully separable from the ask losing salience in a
+longer context; and 0/80 bounds the rate below ~4%, it does not prove zero. Conformity: at decision moments where a peer had already visibly
 complied, agents complied 2/16 times (12%) vs 6/127 (4.7%) when none had — a
 ~2.6x lift, directional only at this n and confounded with episode
 difficulty. Compliance events cluster (two episodes contain two compliers
