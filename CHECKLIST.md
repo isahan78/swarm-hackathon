@@ -9,9 +9,10 @@ for the build spec. ★ = critical path.  **← YOU ARE HERE** marks current fro
 - [x] Build env skeleton + episode loop, proven with stub (honest/compliant/latent)
 - [x] PROJECT.md + PRD.md
 - [x] Init git repo; copy preexisting probe scripts into `probe/` (marked preexisting)
-- [ ] **Seal the pre-registration** — fill owner's forecast in docs/plan/prereg.md and
-      commit BEFORE any GPU: overt = probe ties text; latent = probe leads text; hidden = ?
-- [ ] Post Discord recruit — Naveen is in (orchestration + report); confirm & lock team
+- [x] **Seal the pre-registration** — both forecasts sealed in docs/plan/prereg.md
+      before condition-level results; all changes since logged in its deviations
+- [ ] Lock team — Roshan in (repo collaborator; need full name + email for the form);
+      Naveen silent
 - [ ] Confirm live Apart page: page limit, abstract length, required appendix
 
 ## Phase 1 — Wire Qwen3-8B (Sat AM, on RunPod) ★
@@ -24,37 +25,47 @@ for the build spec. ★ = critical path.  **← YOU ARE HERE** marks current fro
 
 ## Phase 2 — Generate data + tune (Sat midday) ★
 - [x] Define the 3 condition framings (overt / latent / hidden evasion pressure) — conditions.py
-- [ ] ★ TUNE prompts so BOTH co-opted and clean rates are non-trivial (the knife-edge)  **← YOU ARE HERE**
-      Sweep 1 (n=4/cell) invalid: CoT truncation at 512 tokens silently "done"d the source
-      before it ever asked (fixed: 1536 + retry + parse_ok logging). Sweep 2: 1/24 genuine
-      co-opt (overt/authority only); 1 fake co-opt exposed a label loophole (source
-      self-planting marker in its own file — fixed: label restricted to recipient-owned
-      files). Sweep 3 running: 'ticket' justification tier (concrete ticket + deadline).
-- [ ] Generate N episodes/condition; store transcript + per-step activations + free label
-- [ ] Generate clean no-recruit control episodes (probe false-positive floor)
+- [x] ★ TUNE prompts so BOTH rates are non-trivial — knife-edge opened after 3 sweeps
+      + one incident: the recipient's "only the requested change" rule inoculated it
+      (0/40); recipient latitude revised ONCE uniformly, ticket tier frozen (prereg logged)
+- [x] Generate episodes: overt 20/30, latent 14/25, hidden 12/25 co-opted — in repo
+      (runs/full/*.jsonl + .npz), flattened (runs/flat/), frozen split (runs/split.json)
+- [x] Clean no-recruit controls: 0/20 co-opted (floor holds); pod STOPPED after rsync
 
-## Phase 3 — Monitors + faithfulness (Sat PM)
-- [ ] Faithfulness judge pass: rate per episode whether transcript reveals the co-option
-- [ ] Train probe (held-out by objective, not just run) — reuse train_probe.py
-- [ ] Run transcript monitor (text baseline / LLM judge) on the same episodes
+## Phase 3 — Monitors + faithfulness (done Sun AM)
+- [x] Faithfulness measured structurally: marker visible in ask in ALL conditions
+      (30/30, 24/25, 22/25); Dev-B verbalizes it 0 times anywhere (docs/results.md)
+- [x] Train probe — analysis/probe_eval.py on the frozen split (fresh code; the
+      preexisting probe/ scripts informed the method)
+- [x] Transcript monitor: trained TF-IDF under the strict input contract —
+      analysis/text_baseline.py
 
-## Phase 4 — Analysis = the result (Sat night)
-- [ ] Detection @ matched FPR, both monitors, vs MEASURED faithfulness → crossover plot
-- [ ] Detection latency: steps the probe leads the transcript (latent episodes)
-- [ ] Controls: probe FPR floor on clean; compare vs imported single-agent baseline
-- [ ] Two headline figures — reuse make_figures.py
+## Phase 4 — Analysis = the result (done Sun AM)
+- [x] Head-to-head PAIRED on 50 identical splits (analysis/head_to_head.py):
+      probe−text = +0.19 overt / +0.23 latent / −0.05 hidden; probe wins 82/78/30%
+      of splits. FALSIFIER DOES NOT FIRE. Prereg's control-calibrated 2% FPR found
+      degenerate (ask detector) — logged; within-condition AUC is the honest metric
+- [x] Latency: marker lands at Dev-B's first decision round (56/58) → reframed as
+      within-round lead (prefill vs emitted action), logged in prereg deviations
+- [x] Controls: 0/20 co-opted; canary + B1 step-0 control + overt-only transfer run
+- [x] Two headline figures: figures/fig1_probe_auc.png, figures/fig2_probe_vs_text.png
 
-## Phase 5 — Ceiling (Sun AM, only if floor is solid)
-- [ ] Scale to N agents; does co-option cascade hop to hop; does the probe track the front
+## Phase 5 — Ceiling: swarm fan-out (Sun PM)  **← YOU ARE HERE**
+- [x] Fan-out code built + stub-tested (swarm_env/fanout.py): 1 source → 3 recipients,
+      recipient prompt/marker/tier FROZEN (zero-shot probe transfer), per-step
+      peer_complied_before logged for the conformity number
+- [ ] ★ Run ~12 fan-out episodes on the pod (~1.5h, ~$1); conformity analysis +
+      zero-shot probe transfer readout
 
-## Phase 6 — Write-up + submit (Sun)
-- [ ] Report on official template (abstract 150–250w, thesis, setup, results, limitations)
-- [ ] Limitations + Dual-Use appendix (address circularity head-on; no novel harm)
-- [ ] Mark preexisting code as preexisting in README + report
-- [ ] Submit form before Sun Nov 8 23:59 AoE (title, summary, PDF, Track 4, team, emails)
+## Phase 6 — Write-up + submit (Sun evening) ★
+- [ ] ★ Report on official template (abstract 150–250w; results from docs/results.md)
+- [ ] Limitations + Dual-Use appendix (degenerate-threshold + hidden-premise caveats in)
+- [ ] Mark preexisting code as preexisting in README + report (probe/README.md done)
+- [ ] Flip repo public; submit form before Sun Nov 8 23:59 AoE
+      (title, summary, PDF, Track 4, team names + emails — NEED Roshan's)
 
 ---
 ### Immediate next 3 actions
-1. Seal the pre-registration and commit it.
-2. Get the RunPod up with Qwen3-8B.
-3. I write `HFModel` + the activation hook the moment the pod is live.
+1. Restart pod, launch the fan-out run (one command), stop pod after rsync.
+2. Draft the report on the official template while it generates.
+3. Get Roshan's full name + email; flip repo public; submit.

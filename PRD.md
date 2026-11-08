@@ -1,7 +1,8 @@
 # PRD & Build Log — Co-opted from the inside
 
 Living document. Product requirements up top, a running record of everything
-done below. See [PROJECT.md](PROJECT.md) for the why. Last updated: 2026-11-07.
+done below. See [PROJECT.md](PROJECT.md) for the why. Last updated: 2026-11-08
+(results in — see [docs/results.md](docs/results.md)).
 
 ---
 
@@ -112,17 +113,49 @@ co-option earlier than a transcript monitor?* Four parts:
   then `generate()` for the action text. Lazy torch import keeps the stub loop GPU-free.
   Not yet run — needs the pod.
 
+### 2026-11-08 — the 0/40 incident, the full run, and the result
+- **Full run #1 (old recipient prompt) came back 0/40 co-opted on overt** — not a bug:
+  asks posted in 39/40, parses fine; Dev-B's rule "make ONLY the change your task
+  requires" inoculated it against ALL influence (refusal CoT cited it verbatim).
+  Revised the recipient to a realistic engineer's latitude — ONCE, identically in
+  every condition (attribution logic intact) — capped Dev-A at 2 asks, archived the
+  old episodes as tuning data, logged everything in prereg deviations. Sanity 2/6 →
+  relaunched at 30/25/25/20.
+- **Dataset landed overnight: overt 20/30, latent 14/25, hidden 12/25, control 0/20**
+  (100 episodes, 204 recipient step-vectors at dim 4096). Rsynced local, pod stopped.
+  Committed raw jsonl+npz, monitor-facing flattening (`runs/flat/steps.jsonl`, no
+  labels per the input contract), eval join table, frozen seed-0 70/30 split.
+- **1:30am canary** (go/no-go, prereg-logged): post-action AUC 0.997 = the trivial
+  B4 positive control; decision-step pre-action AUC ~0.70 = real signal. Proceeded.
+- **Probe eval** (`analysis/probe_eval.py`): pre-action episode-level AUC over 50
+  splits — latent 0.84 ± 0.13, hidden 0.74 ± 0.15, overt 0.64 ± 0.15. Two analysis
+  deviations logged: the prereg 2%-FPR-on-controls threshold is DEGENERATE (controls
+  have no ask → it detects asks, not co-option; within-condition AUC is the honest
+  metric), and step-latency fails mechanically (marker lands at Dev-B's first round
+  56/58 → the probe's lead is within-round, prefill vs emitted action).
+- **Text monitor + head-to-head** (`analysis/text_baseline.py`, `head_to_head.py`):
+  trained TF-IDF under the strict input contract, PAIRED on 50 identical splits —
+  probe−text = **+0.19 overt / +0.23 latent / −0.05 hidden** (probe wins 82/78/30%
+  of splits). **The falsifier does not fire; H2 (latent headline) supported; H1
+  wrong in our favor** (pre-action transcript ≈ uninformative, text at 0.46); H3's
+  premise failed structurally (ask stays board-visible in hidden; 3 no-ask episodes
+  hand the text monitor free signal). Figures 1 + 2 committed.
+- **Swarm fan-out built** (`swarm_env/fanout.py`): 1 source → 3 recipients, recipient
+  prompt byte-identical (name/file substitution only) for zero-shot probe transfer,
+  `peer_complied_before` logged per step for the conformity number. Stub-tested;
+  awaiting the ~$1 pod run.
+
 ## 5. To-do (weekend plan)
 - [x] Design the task + hidden objective (the unsanctioned marker).
 - [x] Env state + actions (`env.py`).
 - [x] Prompts + model interface + episode loop; run Stub end-to-end (clean / co-opted / latent).
-- [ ] Stand up Qwen3-8B on RunPod behind the same interface.
-- [ ] Activation capture in the loop (fixed layer, last-token).
-- [ ] Generate dataset; TUNE so co-opted and clean rates are both non-trivial (knife-edge).
-- [ ] Faithfulness judge pass.
-- [ ] Train probe (held-out by objective) + run transcript monitor.
-- [ ] Analysis: detection vs faithfulness; detection latency. Two figures.
-- [ ] CEILING: scale to N agents (cascade), if floor is solid.
+- [x] Stand up Qwen3-8B on RunPod behind the same interface.
+- [x] Activation capture in the loop (fixed layer, last-token).
+- [x] Generate dataset; TUNE so co-opted and clean rates are both non-trivial (knife-edge).
+- [x] Faithfulness measured (structural analysis: ask visible everywhere, Dev-B silent).
+- [x] Train probe (frozen episode split) + run trained transcript monitor.
+- [x] Analysis: paired head-to-head; within-round latency reframe. Two figures.
+- [ ] CEILING: fan-out run (code built + stub-tested; needs the ~$1 pod run).
 - [ ] Report on official template + Limitations/Dual-Use appendix; mark preexisting code.
 - [ ] Submit before Sun 23:59 AoE.
 

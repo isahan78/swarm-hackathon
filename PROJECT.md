@@ -43,6 +43,18 @@ make this claim.
 - Detection at matched FPR for both monitors vs **measured transcript faithfulness** (crossover).
 - **Detection latency**: how many steps the probe leads the transcript.
 
+## Result (Nov 8 — see [docs/results.md](docs/results.md) for the full table)
+100 episodes: co-opt rates overt 20/30, latent 14/25, hidden 12/25, control 0/20.
+Probe vs trained transcript monitor, paired on 50 identical splits, pre-action
+episode-level AUC: **probe wins overt (+0.19) and latent (+0.23, headline),
+roughly ties hidden (−0.05)**. The pre-registered falsifier (probe ties or loses
+in BOTH latent and hidden) does not fire. Sharpest framing: pre-action, both
+monitors see the same nearly-identical asks — the transcript is ~uninformative
+(text AUC 0.46–0.62) while the recipient's internal representation of the ask
+already predicts its not-yet-made decision (0.64–0.84). Latency reframed:
+compliance lands in the first decision round, so the probe's lead is
+within-round — it reads the decision at prefill, before one action token exists.
+
 ## Can't-lose
 - Probe catches latent/hidden co-option the transcript misses → novel, judge-pleasing.
 - Probe fails (needs verbalization / not linearly accessible) → real finding about
