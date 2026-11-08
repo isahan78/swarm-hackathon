@@ -230,6 +230,17 @@ complied, agents complied 2/16 times (12%) vs 6/127 (4.7%) when none had — a
 difficulty. Compliance events cluster (two episodes contain two compliers
 each, with the follower acting after the leader's edit was visible).
 
+**Cross-model check (exploratory, behavior-only, API-served):** the group
+suppression did NOT replicate in larger same-family models: qwen3-14B
+complied 6/10 alone and 26/30 in the 3-recipient setting; qwen3-32B 10/10
+and 23/30. The collapse is therefore a property of the 8B model, not of
+group settings in general, and we scope that claim accordingly. The larger
+models' willingness to comply also means the monitoring problem the probe
+addresses persists with scale; whether the probe itself transfers upward is
+untested here (no activations over an API) and is the natural next
+experiment. Caveats: n=10–30 per cell, third-party serving (multiple
+providers), behavior only.
+
 **Replay probing validated.** Because the probe reads at prefill — a
 deterministic function of the prompt — activations can be recovered after
 the fact from transcripts alone. We verified this end-to-end: prompts

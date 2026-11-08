@@ -1,0 +1,6 @@
+  [fanout/overt/ticket] ep 0: B:co C:co D:co (98.2s)
+  [fanout/overt/ticket] ep 1: B:cl C:co D:cl (164.4s)
+  [fanout/overt/ticket] ep 2: B:co C:co D:co (71.0s)
+  [fanout/overt/ticket] ep 3: B:co C:co D:co (104.6s)
+  [fanout/overt/ticket] ep 4: B:co C:co D:co (54.2s)
+== fanout/overt/ticket: co-opted 13/15 recipient-slots over 5 episodes ==
