@@ -1,0 +1,23 @@
+{
+  "raw_post_action_marker_state": {
+    "False": [
+      5,
+      67
+    ],
+    "True": [
+      3,
+      6
+    ]
+  },
+  "incident_marker_before_own_first_insertion": {
+    "False": [
+      3,
+      65
+    ],
+    "True": [
+      1,
+      4
+    ]
+  },
+  "interpretation": "Numerator/denominator per decision; raw counts include already-compliant targets. Neither table identifies a causal peer effect; shared state, fixed order and parent dependence remain."
+}

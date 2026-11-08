@@ -1,0 +1,10 @@
+{
+  "source": "https://github.com/google/fonts/tree/main/ofl/oldstandardtt",
+  "license": "SIL Open Font License 1.1; see OFL.txt",
+  "files": {
+    "OldStandard-Italic.ttf": "4b9522f4711317fc06e2413a58b4662c249cb707df193d682b9d640e365ef564",
+    "OldStandard-Regular.ttf": "42717a1280b523a506ca2b0285cca380e77fe214b1f6e3d75a8b925005f19eac",
+    "OFL.txt": "4faa2d9e2ce0a4b5b37e62ee6fafe474a539b31578f7214ed97cc3503aeb8ebd",
+    "OldStandard-Bold.ttf": "7d831e9d799ad23ee98e889381a9db2a283b2dac7f228dd5c06071decb9c54db"
+  }
+}

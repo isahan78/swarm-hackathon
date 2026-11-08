@@ -1,0 +1,67 @@
+{
+  "analysis_tests": {
+    "tests": 122,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_archive_sha256": "f63e232a6c3a2ffd9785f169efca90da44c21b05372e544c3628e51ed9fbca80",
+  "collaborator_source_modified": false,
+  "gpu_restarted_for_analysis": false,
+  "main": {
+    "episodes": 100,
+    "vectors": 204,
+    "marker_positive_episodes": 46,
+    "verified_recipient_ownership_violations": 0,
+    "outer_train": 70,
+    "inner_train": 56,
+    "validation": 14,
+    "outer_test": 30,
+    "first_decision_activation_auroc": 0.7745535714285715,
+    "first_decision_full_context_text_auroc": 0.765625,
+    "paired_delta": {
+      "n": 30,
+      "n_groups": 30,
+      "n_positive": 14,
+      "n_negative": 16,
+      "difference": 0.008928571428571508,
+      "ci95": [
+        -0.14265362394957978,
+        0.17191145833333335
+      ],
+      "comparison": "activation AUROC minus full-visible-context TF-IDF AUROC",
+      "bootstrap_unit": "complete episode split_group_id",
+      "bootstrap_replicates": 200,
+      "n_valid_bootstrap_replicates": 200
+    }
+  },
+  "contract_comparable": {
+    "train": 70,
+    "test": 30,
+    "activation_auroc": 0.8370535714285714,
+    "board_edit_text_auroc": 0.7611607142857142,
+    "paired_delta": {
+      "n": 30,
+      "n_groups": 30,
+      "n_positive": 14,
+      "n_negative": 16,
+      "difference": 0.0758928571428572,
+      "ci95": [
+        -0.04886642156862749,
+        0.22790178571428574
+      ],
+      "comparison": "supplied activation probe AUROC minus public board-plus-edit-actions TF-IDF AUROC",
+      "bootstrap_unit": "complete episode split_group_id",
+      "bootstrap_replicates": 200,
+      "n_valid_bootstrap_replicates": 200
+    }
+  },
+  "fanout_transfer": {
+    "parents": 12,
+    "targets": 36,
+    "positives": 4,
+    "activation_auroc": 0.3046875,
+    "text_auroc": 0.71875
+  },
+  "interpretation": "Retrospective marker-compliance prediction; no clear main activation advantage; no verified unauthorized recipient action. Third LLM monitor unavailable for these datasets."
+}

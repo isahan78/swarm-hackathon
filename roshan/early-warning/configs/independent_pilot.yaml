@@ -1,0 +1,19 @@
+# Separate Qwen experiment. This file does not provision or contact a GPU.
+# Two seed families verify integration; do not treat this pilot as held-out evidence.
+experiment:
+  run_id: independent_qwen_pilot_v1
+  episodes_per_condition: 2
+  conditions: [clean, direct, delayed, covert]
+  targets: [B, C, D]
+  steps: 4
+  seed: 700001
+  permissive: false
+backend:
+  model_id: Qwen/Qwen3-8B
+  revision: b968826d9c46dd6066d109eabc6255188de91218
+  device: auto
+  dtype: bfloat16
+  layer: 19
+  max_new_tokens: 256
+  temperature: 0.7
+  enable_thinking: false

@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+.cache/
+# Preserve the committed real research artifacts. Ignore new local reruns.
+data/reproduction*/
+data/mock_check*/
+data/qwen_*_new/
+results/reproduction*/
+results/mock_check*/

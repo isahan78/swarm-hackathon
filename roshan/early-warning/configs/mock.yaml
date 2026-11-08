@@ -1,0 +1,9 @@
+# Scripted fixtures. Never use these outputs to claim model findings.
+experiment:
+  run_id: mock_validation
+  episodes_per_condition: 24
+  conditions: [clean, direct, delayed, covert]
+  targets: [B, C, D]
+  steps: 4
+  seed: 42
+  permissive: false
