@@ -25,8 +25,8 @@ _IMPL_WITH_MARKER = (
 )
 
 
-def parse_action(text: str) -> dict:
-    """Extract the last JSON object from a model's text output."""
+def parse_action_or_none(text: str):
+    """Extract the last JSON action object from a model's text output, or None."""
     objs = re.findall(r"\{.*?\}", text, flags=re.DOTALL)
     for chunk in reversed(objs):
         try:
@@ -35,7 +35,11 @@ def parse_action(text: str) -> dict:
                 return obj
         except json.JSONDecodeError:
             continue
-    return {"type": "done"}  # fail safe: if we can't parse, end the agent
+    return None
+
+
+def parse_action(text: str) -> dict:
+    return parse_action_or_none(text) or {"type": "done"}  # fail safe
 
 
 def _recruit_seen(ep) -> bool:
@@ -147,8 +151,11 @@ class HFModel:
     """
 
     def __init__(self, model_id="Qwen/Qwen3-8B", layer=18, device="cuda",
-                 temperature=0.7, top_p=0.9, max_new_tokens=512,
+                 temperature=0.7, top_p=0.9, max_new_tokens=1536,
                  enable_thinking=True, seed=None):
+        # 1536 not 512: with thinking enabled the CoT alone can exceed 512
+        # tokens, truncating BEFORE the JSON action — parse fails, the agent
+        # silently "done"s, and the episode dies (the 0/24 sweep bug).
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -183,8 +190,6 @@ class HFModel:
         )
         inputs = self.tokenizer(text_in, return_tensors="pt").to(self.model.device)
         prompt_len = inputs["input_ids"].shape[1]
-        if self.seed is not None:
-            torch.manual_seed(self.seed + step)
 
         # Pass 1 — activation at the decision point (prefill only, like harvest).
         with torch.inference_mode():
@@ -195,16 +200,31 @@ class HFModel:
         check_activation(vec)
         del hs_out, hs
 
-        # Pass 2 — generate the action text.
-        with torch.inference_mode():
-            gen = self.model.generate(
-                **inputs,
-                max_new_tokens=self.max_new_tokens,
-                do_sample=self.temperature > 0,
-                temperature=self.temperature,
-                top_p=self.top_p,
-                pad_token_id=self.tokenizer.eos_token_id,
-            )
-        raw = self.tokenizer.decode(gen[0][prompt_len:], skip_special_tokens=True)
-        self.last_text = raw
-        return parse_action(raw), vec
+        # Pass 2 — generate the action text. One retry on parse failure
+        # (truncated CoT / malformed JSON) so an agent doesn't silently exit.
+        action = None
+        for attempt in range(2):
+            if self.seed is not None:
+                torch.manual_seed(self.seed + step * 2 + attempt)
+            with torch.inference_mode():
+                gen = self.model.generate(
+                    **inputs,
+                    max_new_tokens=self.max_new_tokens,
+                    do_sample=self.temperature > 0,
+                    temperature=self.temperature,
+                    top_p=self.top_p,
+                    pad_token_id=self.tokenizer.eos_token_id,
+                )
+            n_new = gen[0].shape[0] - prompt_len
+            raw = self.tokenizer.decode(gen[0][prompt_len:], skip_special_tokens=True)
+            self.last_text = raw
+            action = parse_action_or_none(raw)
+            self.last_meta = {
+                "parse_ok": action is not None,
+                "truncated": n_new >= self.max_new_tokens,
+                "attempt": attempt,
+                "new_tokens": int(n_new),
+            }
+            if action is not None:
+                break
+        return action or {"type": "done"}, vec

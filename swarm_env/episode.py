@@ -53,6 +53,9 @@ def run_episode(model, max_steps: int = 6, source=None, recipient=None):
             }
             if agent.role == "recipient":
                 record["activation"] = activation  # probe input (None in stub)
+            meta = getattr(model, "last_meta", None)
+            if meta is not None:
+                record["gen"] = meta  # parse_ok / truncated / attempt (HFModel only)
             ep.log.append(record)
             if action.get("type") == "done":
                 done[agent.name] = True

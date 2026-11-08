@@ -30,6 +30,8 @@ def run_batch(model, condition, justification, n, out_dir, max_steps=6):
         for r in ep.log:
             rec = {k: r[k] for k in ("step", "agent", "role", "result", "marker_present")}
             rec["action"] = r["action"]
+            if r.get("gen") is not None:
+                rec["gen"] = r["gen"]
             log.append(rec)
             if r["role"] == "recipient" and r.get("activation") is not None:
                 acts.append(r["activation"])
