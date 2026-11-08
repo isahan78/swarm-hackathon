@@ -45,7 +45,7 @@ for the build spec. ★ = critical path.  **← YOU ARE HERE** marks current fro
       probe−text = +0.19 overt / +0.23 latent / −0.05 hidden; probe wins 82/78/30%
       of splits. FALSIFIER DOES NOT FIRE. Prereg's control-calibrated 2% FPR found
       degenerate (ask detector) — logged; within-condition AUC is the honest metric
-- [x] Latency: marker lands at Dev-B's first decision round (56/58) → reframed as
+- [x] Latency: marker lands at Dev-B's first decision round (42/46) → reframed as
       within-round lead (prefill vs emitted action), logged in prereg deviations
 - [x] Controls: 0/20 co-opted; canary + B1 step-0 control + overt-only transfer run
 - [x] Two headline figures: figures/fig1_probe_auc.png, figures/fig2_probe_vs_text.png

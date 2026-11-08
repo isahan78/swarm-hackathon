@@ -180,7 +180,7 @@ stochastic decision better than the ask's surface text? In overt and latent,
 yes.
 
 **Latency, honestly reframed.** The recipient complies in its first decision
-round in 56/58 co-opted episodes, so "probe leads by k rounds" fails
+round in 42/46 co-opted episodes, so "probe leads by k rounds" fails
 mechanically — there are no earlier rounds. The probe's real lead is
 within-round: the activation is captured at prefill, before one action token
 exists, while a transcript monitor can only react to the posted edit. Both

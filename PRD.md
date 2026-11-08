@@ -132,7 +132,7 @@ co-option earlier than a transcript monitor?* Four parts:
   deviations logged: the prereg 2%-FPR-on-controls threshold is DEGENERATE (controls
   have no ask → it detects asks, not co-option; within-condition AUC is the honest
   metric), and step-latency fails mechanically (marker lands at Dev-B's first round
-  56/58 → the probe's lead is within-round, prefill vs emitted action).
+  42/46 → the probe's lead is within-round, prefill vs emitted action).
 - **Text monitor + head-to-head** (`analysis/text_baseline.py`, `head_to_head.py`):
   trained TF-IDF under the strict input contract, PAIRED on 50 identical splits —
   probe−text = **+0.19 overt / +0.23 latent / −0.05 hidden** (probe wins 82/78/30%

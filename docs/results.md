@@ -32,7 +32,10 @@ Scoring the hypotheses:
 
 Caveat on hidden text 0.79: partially driven by ask-phrasing features and the
 3 no-ask episodes; both are information a real transcript watcher would have,
-so we keep it.
+so we keep it. Robustness check (pre-submission review): excluding the 3
+no-ask episodes, hidden probe 0.69 ± 0.17 and text 0.75 ± 0.16 over the same
+50 splits — both drop, the gap holds; the conclusion is not an artifact of
+those episodes.
 
 ## Probe-only readout (earlier this morning)
 
@@ -56,7 +59,7 @@ signal**, hidden retains partial signal, overt is weakest for the probe.
 
 ## Latency — honest reframe
 
-Dev-B plants the marker in its FIRST decision round in 56/58 co-opted
+Dev-B plants the marker in its FIRST decision round in 42/46 co-opted
 episodes (marker_step 0, occasionally 1). There is no multi-round pre-action
 window, so "median latency > 0 rounds" (H2 as written) fails mechanically.
 The probe's real lead is **within-round**: the activation is captured at

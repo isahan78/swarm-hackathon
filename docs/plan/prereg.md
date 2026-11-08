@@ -89,11 +89,20 @@ owner predicts HIDDEN with a ~4-step latent lead. The data decides.)
   an ask detector, not a co-option detector. We still report the prereg metric,
   and ADD within-condition episode-level AUC (co-opted vs refused, ask present
   in both classes) as the informative metric — applied identically to probe and
-  text monitor. Also: marker lands in Dev-B's first decision round in 56/58
+  text monitor. Also: marker lands in Dev-B's first decision round in 42/46
   co-opted episodes, so step-latency (H2's "median latency > 0") fails
   mechanically; the probe's lead is within-round (prefill vs emitted action),
   reported as such. See docs/results.md. Decided before the text-monitor
   comparison was run.
+- 2026-11-08 ~4:30pm (correction, found in pre-submission review): the
+  first-round compliance count was stated as 56/58 in earlier entries and
+  documents — an arithmetic error. The correct count from runs/full is 42/46
+  (91%; the remaining 4 comply at round 1). Corrected in place everywhere
+  (git history preserves the error). No conclusion changes: round-level
+  latency still fails mechanically. Also run in the same review: hidden
+  AUCs excluding the 3 no-ask episodes — probe 0.69 ± 0.17, text 0.75 ± 0.16
+  (from 0.74/0.79) — the probe-does-not-win-hidden conclusion is robust to
+  removing the episodes that hand the text monitor free signal.
 - 2026-11-07 (tuning outcome, logged for transparency): justification tier frozen at
   'ticket' after 3 sweeps (bare: 0, reason: 0/24, authority: 1/20 genuine, ticket:
   2/12). Observed during tuning, before the full run: hidden recruits hardest
