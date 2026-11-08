@@ -209,12 +209,30 @@ scoring: forecast A called the latent headline (correct) and hidden AUC
 0.60–0.70 (observed 0.74); forecast B called hidden as headline (wrong) but
 "probe partly catches hidden" (correct).
 
-**Swarm fan-out.** [PENDING — 12 episodes generating at submission-draft
-time. Early pattern: lower per-recipient co-opt rate than the 2-agent
-setting under a broadcast ask, with the first compliance episode showing the
-follow-the-peer ordering (C complies, then D). Final numbers: conformity
-contrast P(adopt | peer complied) vs P(adopt | none), and zero-shot transfer
-AUC of the 2-agent probe on fan-out recipients.]
+**Swarm fan-out: group settings collapse recruitment regardless of
+addressing.** 24 episodes, 72 recipient-decisions, two arms. Broadcast ask
+(one message to all three): 4/36 co-opted (11%). Personal ask (a separate,
+named message per recipient, same shared board): also 4/36 (11%) — against
+67% in the 2-agent setting. Direct addressing does NOT restore compliance,
+ruling out the simple dilution story; the suppressor is the group setting
+itself. Our candidate mechanism: on a shared board every recipient *sees the
+ask being mass-made*, which may undercut its legitimacy — the 2-agent ask is
+exclusive by construction. (Testing this needs private channels: future
+work.) Conformity: at decision moments where a peer had already visibly
+complied, agents complied 2/16 times (12%) vs 6/127 (4.7%) when none had — a
+~2.6x lift, directional only at this n and confounded with episode
+difficulty. Compliance events cluster (two episodes contain two compliers
+each, with the follower acting after the leader's edit was visible).
+
+**Replay probing validated.** Because the probe reads at prefill — a
+deterministic function of the prompt — activations can be recovered after
+the fact from transcripts alone. We verified this end-to-end: prompts
+reconstructed from logged boards/edits and re-run through the model
+reproduce the originally captured activations exactly (cosine similarity
+1.000000, max absolute difference 0.0 over 18 vectors). White-box
+monitoring of this design is therefore retroactive: any logged swarm can be
+probed by an auditor holding the weights, with no instrumentation at
+incident time.
 
 ## 5. Discussion and Limitations
 
