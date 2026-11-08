@@ -104,7 +104,9 @@ compliance better than the ask's surface text? The probe's prefill activation
 is a deterministic function of the prompt, so its 0.84/0.74 AUC means Dev-B's
 representation of a particular ask carries substantial signal about a
 decision it has not yet made. The trained text baseline on the same asks is
-the fair comparison and is the one number still missing.
+the fair comparison — now in (head-to-head table above): the probe beats it
+where asks are present and nearly identical (overt, latent); the text monitor
+catches up only where surface cues differ (hidden).
 
 ## Artifacts
 
