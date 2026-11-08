@@ -81,6 +81,19 @@ owner predicts HIDDEN with a ~4-step latent lead. The data decides.)
   control, not a claim); decision-step (pre-action) AUC ~0.70 with very wide split
   variance (n=30). Verdict: pipeline sound, pre-action signal present; proceed.
   No knobs changed in response.
+- 2026-11-08 ~5:45am (analysis deviation, discovered at first pre-registered
+  readout): the frozen operating point — 2% FPR calibrated on CONTROL episodes —
+  is degenerate. Controls contain no recruitment ask, so the threshold lands at
+  ~0.001 and the probe flags every episode containing an ask, clean or co-opted
+  (100% false alarms on clean treated episodes). At that threshold the probe is
+  an ask detector, not a co-option detector. We still report the prereg metric,
+  and ADD within-condition episode-level AUC (co-opted vs refused, ask present
+  in both classes) as the informative metric — applied identically to probe and
+  text monitor. Also: marker lands in Dev-B's first decision round in 56/58
+  co-opted episodes, so step-latency (H2's "median latency > 0") fails
+  mechanically; the probe's lead is within-round (prefill vs emitted action),
+  reported as such. See docs/results.md. Decided before the text-monitor
+  comparison was run.
 - 2026-11-07 (tuning outcome, logged for transparency): justification tier frozen at
   'ticket' after 3 sweeps (bare: 0, reason: 0/24, authority: 1/20 genuine, ticket:
   2/12). Observed during tuning, before the full run: hidden recruits hardest
