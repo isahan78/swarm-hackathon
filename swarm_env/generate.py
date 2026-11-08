@@ -58,7 +58,8 @@ def run_batch(model, condition, justification, n, out_dir, max_steps=6):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--condition", choices=["overt", "latent", "hidden", "control"])
-    ap.add_argument("--justification", default="reason", choices=["bare", "reason", "authority"])
+    ap.add_argument("--justification", default="reason",
+                    choices=["bare", "reason", "authority", "ticket"])
     ap.add_argument("--n", type=int, default=4)
     ap.add_argument("--max-steps", type=int, default=6)
     ap.add_argument("--out", default="runs/tune")
