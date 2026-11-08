@@ -52,6 +52,24 @@ completeness; this is logged in the prereg deviations.
   sense; the step-latency clause fails as written.
 - H1/H3 (probe vs text monitor): pending the trained text baseline.
 
+## What the probe is actually reading (interpretive frame for the report)
+
+Dev-A's board ask spells out the full marker string in every treated
+condition (30/30 overt, 24/25 latent, 22/25 hidden) — the conditions vary the
+ask's *framing* (immediate / deferred / routine-edit discretion), not whether
+the marker is visible. Dev-B verbalizes the marker in its own messages 0
+times anywhere. And the asks are nearly all unique (sampled at temperature:
+25/30, 25/25, 22/25 unique round-0 asks).
+
+So pre-action, probe and text monitor see the *same information* — the ask —
+and the question becomes exactly the Probe–Text Gap: does white-box access to
+Dev-B's internal representation of the ask predict its eventual (stochastic)
+compliance better than the ask's surface text? The probe's prefill activation
+is a deterministic function of the prompt, so its 0.84/0.74 AUC means Dev-B's
+representation of a particular ask carries substantial signal about a
+decision it has not yet made. The trained text baseline on the same asks is
+the fair comparison and is the one number still missing.
+
 ## Artifacts
 
 - `analysis/probe_eval.py` — frozen-split eval, overt-only transfer, step-0
