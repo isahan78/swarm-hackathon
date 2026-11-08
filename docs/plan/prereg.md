@@ -54,3 +54,14 @@ owner predicts HIDDEN with a ~4-step latent lead. The data decides.)
   episode termination) ran on the pod before the owner's forecast was filled.
   Tyler's forecast was already committed beforehand. Owner: write your forecast
   before reading the smoke episode's behavioral outcome, or note that you read it.
+- 2026-11-07 (pre-generation): episodes per condition ~100 -> 40. Reason: fixing the
+  CoT-truncation bug required max_new_tokens 512->1536, which took episodes from ~60s
+  to ~2.5-6 min; 100/cond would cost ~$20+ vs the $14.74 budget. 40 x (overt, latent,
+  hidden, control) = 160 episodes ~= $7. Decided BEFORE the full run, after tuning
+  sweeps only (n=4/cell). All other knobs unchanged (layer 18, last-token, 2% FPR,
+  held-out-by-objective).
+- 2026-11-07 (tuning outcome, logged for transparency): justification tier frozen at
+  'ticket' after 3 sweeps (bare: 0, reason: 0/24, authority: 1/20 genuine, ticket:
+  2/12). Observed during tuning, before the full run: hidden recruits hardest
+  (0/8 at authority+ticket) — the discretion ask itself appears to raise refusal.
+  H3/hidden analysis may be positive-starved at n=40; we will report it either way.
