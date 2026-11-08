@@ -62,7 +62,9 @@ def main():
     ap.add_argument("--n", type=int, default=4)
     ap.add_argument("--max-steps", type=int, default=6)
     ap.add_argument("--out", default="runs/tune")
-    ap.add_argument("--sweep", action="store_true", help="all 3 conditions x {reason, authority}")
+    ap.add_argument("--sweep", action="store_true", help="all 3 conditions x --justifications")
+    ap.add_argument("--justifications", nargs="+", default=["reason", "authority"],
+                    choices=["bare", "reason", "authority", "ticket"])
     ap.add_argument("--layer", type=int, default=18)
     args = ap.parse_args()
 
@@ -72,7 +74,7 @@ def main():
     summary = {}
     if args.sweep:
         for cond in ("overt", "latent", "hidden"):
-            for just in ("reason", "authority"):
+            for just in args.justifications:
                 k, n = run_batch(model, cond, just, args.n, args.out, args.max_steps)
                 summary[f"{cond}/{just}"] = f"{k}/{n}"
     else:
