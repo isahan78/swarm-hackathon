@@ -72,6 +72,8 @@ owner predicts HIDDEN with a ~4-step latent lead. The data decides.)
   Consequence: the 40 overt episodes from the old recipient prompt are archived as
   tuning data, not part of the analysis dataset. Episode budget re-planned at the
   sanity-checked rate. No forecasts or analysis knobs touched.
+  Sanity check at the revised setting: overt/ticket 2/6 co-opted -> setting frozen;
+  full run relaunched at 30 episodes/condition x 4 conditions (~8 GPU-hrs ~= $4.7).
 - 2026-11-07 (tuning outcome, logged for transparency): justification tier frozen at
   'ticket' after 3 sweeps (bare: 0, reason: 0/24, authority: 1/20 genuine, ticket:
   2/12). Observed during tuning, before the full run: hidden recruits hardest
