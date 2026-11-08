@@ -1,4 +1,40 @@
-# Results — probe side (morning of Nov 8; text-monitor comparison pending)
+# Results (Nov 8; probe + text monitor head-to-head)
+
+## HEAD-TO-HEAD: probe vs transcript monitor (the core claim)
+
+Trained TF-IDF text monitor, same input contract (board messages visible at
+the recipient's prompt time), same frozen split, same pre-action windows,
+same episode scoring, evaluated PAIRED on 50 identical splits:
+
+| condition | probe | text | Δ (probe−text) | 95% split interval | probe wins |
+|-----------|------:|-----:|---------------:|-------------------:|-----------:|
+| overt     | 0.64  | 0.46 | **+0.19**      | [−0.20, +0.49]     | 82% of splits |
+| latent    | 0.84  | 0.62 | **+0.23**      | [−0.08, +0.73]     | 78% of splits |
+| hidden    | 0.74  | 0.79 | −0.05          | [−0.36, +0.35]     | 30% of splits |
+
+**The falsifier does not fire**: the probe clearly beats the transcript in
+latent (and overt); the central claim — there is a regime where white-box
+access wins pre-action — stands. Per-condition deltas are directional at
+n=100 (intervals cross 0); the probe-wins-fraction is the stabler readout.
+
+Scoring the hypotheses:
+- **H1 (overt: probe does NOT beat text)** — wrong in an interesting way:
+  the probe beats text (+0.19) because the pre-action transcript is nearly
+  uninformative (text ≈ chance, 0.46). The Probe–Text Gap of precrime-agents
+  assumed a faithful, informative transcript; pre-action there isn't one.
+- **H2 (latent headline)** — supported: +0.23, the largest gap, exactly where
+  Tyler forecast the headline.
+- **H3 (hidden: transcript drops toward chance)** — premise fails: the ask is
+  still visible on the board in hidden (concealment was asked of Dev-B, which
+  never verbalizes anyway), and 3/25 hidden episodes have no ask at all
+  (0/3 co-opted) — a legitimate free signal for the text monitor (0.79).
+  The probe survives (0.74) but does not beat the transcript there.
+
+Caveat on hidden text 0.79: partially driven by ask-phrasing features and the
+3 no-ask episodes; both are information a real transcript watcher would have,
+so we keep it.
+
+## Probe-only readout (earlier this morning)
 
 Dataset: 100 episodes (overt 20/30 co-opted, latent 14/25, hidden 12/25,
 control 0/20). Frozen split: `runs/split.json` (seed 0, 70/30, stratified by
