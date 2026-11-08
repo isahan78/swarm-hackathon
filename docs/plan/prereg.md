@@ -73,7 +73,14 @@ owner predicts HIDDEN with a ~4-step latent lead. The data decides.)
   tuning data, not part of the analysis dataset. Episode budget re-planned at the
   sanity-checked rate. No forecasts or analysis knobs touched.
   Sanity check at the revised setting: overt/ticket 2/6 co-opted -> setting frozen;
-  full run relaunched at 30 episodes/condition x 4 conditions (~8 GPU-hrs ~= $4.7).
+  full run relaunched at 30 overt / 25 latent / 25 hidden / 20 control (~$3.9).
+- 2026-11-08 ~1:30am (canary, pipeline go/no-go — logged as promised, NOT a result):
+  overt batch landed 20/30 co-opted. Throwaway probe on overt only, episode-level
+  splits: all-steps AUC ~0.65; last-step-per-episode AUC ~0.997 (expected-trivial:
+  marker visible in the prompt's workspace post-action — this is the B4 positive
+  control, not a claim); decision-step (pre-action) AUC ~0.70 with very wide split
+  variance (n=30). Verdict: pipeline sound, pre-action signal present; proceed.
+  No knobs changed in response.
 - 2026-11-07 (tuning outcome, logged for transparency): justification tier frozen at
   'ticket' after 3 sweeps (bare: 0, reason: 0/24, authority: 1/20 genuine, ticket:
   2/12). Observed during tuning, before the full run: hidden recruits hardest
