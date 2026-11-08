@@ -23,3 +23,8 @@ venv/
 
 # macOS
 .DS_Store
+
+# talk notes / raw sources: local reference only, not part of the submission repo
+docs/talks/
+docs/overview.md
+docs/README.md

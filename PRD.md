@@ -54,7 +54,7 @@ co-option earlier than a transcript monitor?* Four parts:
 ## 4. Build log (what we've done)
 
 ### 2026-11-06 — framing & design
-- Converted 4 hackathon talks + chats into `docs/talks/`; cross-talk synthesis in `docs/overview.md`.
+- Converted 4 hackathon talks + chats into `docs/talks/`; cross-talk synthesis (local notes, since removed from the repo).
 - Verified rules → `docs/plan/rules.md`. Confirmed remote track, deadline Sun 23:59 AoE.
 - Read the METR/Redwood Hugging Face incident report → `docs/plan/hf-incident.md`
   (real emergent swarm: ~1200 agents, recruiters, transcript spoofing spread to 7%).
