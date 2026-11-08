@@ -67,10 +67,16 @@ def main():
     ap.add_argument("--justifications", nargs="+", default=["reason", "authority"],
                     choices=["bare", "reason", "authority", "ticket"])
     ap.add_argument("--layer", type=int, default=18)
+    ap.add_argument("--backend", default="hf", choices=["hf", "openrouter"],
+                    help="hf: local GPU (activations); openrouter: API, behavior only")
     args = ap.parse_args()
 
-    from model import HFModel
-    model = HFModel(layer=args.layer)
+    if args.backend == "openrouter":
+        from or_model import OpenRouterModel
+        model = OpenRouterModel()
+    else:
+        from model import HFModel
+        model = HFModel(layer=args.layer)
 
     summary = {}
     if args.sweep:
