@@ -80,6 +80,13 @@ def build(project: Path, output: Path) -> dict:
         # original downloaded template, before python-docx reads it.
         with zipfile.ZipFile(docx_path) as archive:
             parts = {name: archive.read(name) for name in archive.namelist()}
+        changed = False
+        # Some Pandoc versions keep the font relationships but drop the
+        # embedded font files themselves; restore them from the reference.
+        for name, data in ref_parts.items():
+            if name.startswith("word/fonts/") and name not in parts:
+                parts[name] = data
+                changed = True
         types = ET.fromstring(parts["[Content_Types].xml"])
         namespace = "{http://schemas.openxmlformats.org/package/2006/content-types}"
         if any(name.endswith(".ttf") for name in parts) and not any(
@@ -87,6 +94,8 @@ def build(project: Path, output: Path) -> dict:
             ET.SubElement(types, namespace + "Default", {
                 "Extension": "ttf", "ContentType": "application/x-font-ttf"})
             parts["[Content_Types].xml"] = ET.tostring(types, encoding="utf-8", xml_declaration=True)
+            changed = True
+        if changed:
             with zipfile.ZipFile(docx_path, "w", zipfile.ZIP_DEFLATED) as archive:
                 for name, data in parts.items():
                     archive.writestr(name, data)

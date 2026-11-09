@@ -123,7 +123,7 @@ We provide a working experiment and a reproducible evaluation of real agent-recr
 
 ## Code and Data
 
-Code, real traces, scores and figures are included in the accompanying reproducibility package. Its prepared repository destination is `roshan/early-warning/` on branch `roshan/early-warning-results` of [the team repository](https://github.com/isahan78/swarm-hackathon). Upload is pending because the cloud connection currently rejects writes; no remote publication is claimed. Appendix B gives reproduction settings and attribution, including code that predates the sprint.
+Code, real traces, scores and figures are included in the accompanying reproducibility package. It is published at `roshan/early-warning/` on branch `roshan/early-warning-results` of [the team repository](https://github.com/isahan78/swarm-hackathon) (commit `21011d4`; draft pull request [#1](https://github.com/isahan78/swarm-hackathon/pull/1)). Appendix B gives reproduction settings and attribution, including code that predates the sprint.
 
 ## References
 

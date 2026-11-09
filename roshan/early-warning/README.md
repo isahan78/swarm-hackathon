@@ -4,7 +4,7 @@ A reproducible evaluation of monitors for agent recruitment, prepared for the Ap
 
 **Open the submission [PDF](report/submission_report.pdf), plain-language [report](report/submission_report.md), or editable [Word document](report/submission_report.docx).** The [verified guidelines](report/submission_guidelines.md) explain the report requirements and judging criteria. The [build record](report/submission_build.json) checks formatting; producing a report does not submit it to the event.
 
-**Submission status:** author affiliations still need to be supplied before event submission. GitHub upload remains pending: browser sign-in succeeded, but the cloud connection rejects repository writes. Publishing the package does not submit it to the hackathon.
+**Submission status:** author affiliations still need to be supplied before event submission. The package is published on branch `roshan/early-warning-results` (commit `21011d4`) with draft pull request [#1](https://github.com/isahan78/swarm-hackathon/pull/1). Publishing the package does not submit it to the hackathon.
 
 ## What the evidence supports
 
