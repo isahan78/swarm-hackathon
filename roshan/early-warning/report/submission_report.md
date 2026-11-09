@@ -1,7 +1,7 @@
 # Swarm Early Warning: Testing Predictions of Agent Recruitment
 
-**Roshan R. and Isahan Khan**  
-Author affiliations: not yet supplied  
+**Roshan Ram (Independent) and Isahan Khan (Independent)**  
+Supplementary technical report to the team submission (`docs/report.docx`)  
 Apart Research Swarm Alignment Hackathon 2026  
 Primary: Track 4, Multi-Agent Oversight and Control. Secondary: Track 2, The Science of Agent Networks.  
 8 November 2026

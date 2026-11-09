@@ -2,9 +2,9 @@
 
 A reproducible evaluation of monitors for agent recruitment, prepared for the Apart Research Swarm Alignment Hackathon 2026. Primary: Track 4, Multi-Agent Oversight and Control. Secondary: Track 2, Science of Agent Networks.
 
-**Open the submission [PDF](report/submission_report.pdf), plain-language [report](report/submission_report.md), or editable [Word document](report/submission_report.docx).** The [verified guidelines](report/submission_guidelines.md) explain the report requirements and judging criteria. The [build record](report/submission_build.json) checks formatting; producing a report does not submit it to the event.
+**This directory is supplementary material.** The team's hackathon report is [`docs/report.docx`](../../docs/report.docx) at the repository root; this re-analysis is summarized there. A longer technical write-up is available as a [PDF](report/submission_report.pdf), plain-language [report](report/submission_report.md), or editable [Word document](report/submission_report.docx). The [verified guidelines](report/submission_guidelines.md) explain the report requirements and judging criteria. The [build record](report/submission_build.json) checks formatting; producing a report does not submit it to the event.
 
-**Submission status:** author affiliations still need to be supplied before event submission. The package is published on branch `roshan/early-warning-results` (commit `21011d4`) with draft pull request [#1](https://github.com/isahan78/swarm-hackathon/pull/1). Publishing the package does not submit it to the hackathon.
+**Status:** authors are Roshan Ram (Independent) and Isahan Khan (Independent). The package is published on branch `roshan/early-warning-results` (commit `21011d4`) with draft pull request [#1](https://github.com/isahan78/swarm-hackathon/pull/1). Publishing the package does not submit it to the hackathon.
 
 ## What the evidence supports
 
