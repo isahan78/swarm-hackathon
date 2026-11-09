@@ -1,0 +1,6 @@
+-r requirements.txt
+# Install a torch wheel compatible with the already authorized GPU's CUDA driver.
+torch>=2.6,<3
+transformers>=4.51,<5
+accelerate>=1.0,<2
+safetensors>=0.5,<1

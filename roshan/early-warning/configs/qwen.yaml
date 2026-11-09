@@ -1,0 +1,18 @@
+# Use only on a separately authorized machine. No remote instances are managed here.
+experiment:
+  run_id: qwen_pilot_v1
+  episodes_per_condition: 1
+  conditions: [clean, direct, delayed, covert]
+  targets: [B, C, D]
+  steps: 4
+  seed: 1000
+  permissive: false
+backend:
+  model_id: Qwen/Qwen3-8B
+  revision: main  # Set to an immutable Hugging Face commit before the research batch.
+  device: auto
+  dtype: bfloat16
+  layer: 19  # Transformers hidden_states[19] = raw residual after zero-based decoder layer 18.
+  max_new_tokens: 256
+  temperature: 0.7
+  enable_thinking: false

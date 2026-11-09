@@ -1,0 +1,53 @@
+{
+  "config": {
+    "run_id": "independent_three_targets",
+    "episodes_per_condition": 1,
+    "conditions": [
+      "direct"
+    ],
+    "targets": [
+      "B",
+      "C",
+      "D"
+    ],
+    "steps": 4,
+    "seed": 700001,
+    "permissive": false
+  },
+  "python": "3.12.3",
+  "packages": {
+    "numpy": "2.3.5",
+    "scikit-learn": null,
+    "matplotlib": null,
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "PyYAML": "6.0.3"
+  },
+  "recruiter": "versioned_scripted_A_independent_targets",
+  "prompt_version": "independent-v1",
+  "primary_label": "eventual_unauthorized_attempt",
+  "raw_eventual_labels": "null",
+  "source_hashes": {
+    "swarm/__init__.py": "9de8c7c441ca7f54d54598e80297e8e38c510ca97140c22bbd4af7d07252563a",
+    "swarm/permissions.py": "d5264093c75d80a2dc0a503f9fc9ece5d29b5b0d242ce69460e5bf3bcf94befe",
+    "swarm/board.py": "82f1faa4547ba4077f8a47a3c6d0ac0d29ca41f1456c0c3fa4ba452ff9ab52a6",
+    "swarm/agents.py": "c5575afa27eee7bfd08c53883a9eb83c5a9841ea44688e54f631883add6f2d43",
+    "swarm/runner.py": "c868436dd144fd97beed52d4f4a1f430837e9323e8772d9bf38480a02ab70b5b",
+    "swarm/io.py": "150611e0b11687cec69eca88a1d1dc2b5d91de657dabb39663fae56923d44e61",
+    "swarm/backends/base.py": "72b502347e6060f4282f79dc8596c21b19e72df684ef707f2be6b2476d359202",
+    "swarm/backends/__init__.py": "2d4d4849fcf5415b81998d3cbd613fcecb55863ae70471c3b68240a754dfe2fe",
+    "swarm/backends/adapter.py": "3cd35f25dcbef69c873d6064d11d36b87248cac32106e64f197a4f901051bf0e",
+    "swarm/backends/qwen.py": "170aa93644cf599f7adaeb9ebfa74696005f668298278c6741d39e8dcc9e2dd2",
+    "swarm/backends/mock.py": "bd37b5a232aa0bf41eb4b711600a1fb0c9cfa75f73ccd44fce2468710f3f8ab8",
+    "swarm/backends/collaborator.py": "cee392c66e2685d416ecb2ef92f5f20d290f763b1a1aa148afcc7e845f4780dd",
+    "monitoring/inputs.py": "28ba545c20e1d3634d9d8cf502b3c22d7f926bf89b109c96fd75297347b8c1c1",
+    "monitoring/__init__.py": "bc69b27c4a13ebe2808b57b9c110f2c03145470663bf4fb652a63c95af884d42",
+    "monitoring/transcript_monitor.py": "564df22dc8093a9a8feea9f938829a2f822e9ddc48ce3f84271f55e453b24e69",
+    "monitoring/text_baseline.py": "74b04d32a2e5ec2f60dd346d74c92726234ec4cf46c105dde843c489c349a249",
+    "monitoring/activation_probe.py": "7bda5855c484c3a0d84e89ed792f23bf3b26810ed57e90885490a5e672c0768a",
+    "evaluation/__init__.py": "6309f2b80ea3773260660c6ed4f075ffd9bd23fd4235ac0a9fd4407db28423bb",
+    "evaluation/labels.py": "53ea8b3883996d6c6ce01537e890c42daf40ea85096d3ee55403b48b63ad66db",
+    "evaluation/plots.py": "0c14376b16b7fc6e29d6ea4f6b34dbeada0744b775b878048e7390717da8c8c2",
+    "evaluation/metrics.py": "d578fdfeab75d87188965443de05a8ecb00afc4a874c8efda3f7b282de8c6b52"
+  }
+}

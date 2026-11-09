@@ -1,0 +1,82 @@
+{
+  "audit_date": "2026-11-08",
+  "source_dataset": "/workspace/collaborator-updated/swarm-hackathon-main/runs/fanout/fanout_overt_ticket.jsonl",
+  "data_status": "actual supplied model traces; no new inference",
+  "label_semantics": "final inert-marker presence in recipient-owned file; not verified unauthorized action",
+  "topology": "one source and three recipients; shared board and workspace; fixed A,B,C,D order",
+  "parent_episodes": 12,
+  "target_conversations": 36,
+  "condition": "overt",
+  "justification": "ticket",
+  "marker_positive_targets": 4,
+  "marker_negative_targets": 32,
+  "per_agent_labels": {
+    "Dev-B": {
+      "clean": 12
+    },
+    "Dev-C": {
+      "clean": 9,
+      "co-opted": 3
+    },
+    "Dev-D": {
+      "clean": 11,
+      "co-opted": 1
+    }
+  },
+  "parent_positive_target_count_distribution": {
+    "0": 9,
+    "2": 1,
+    "1": 2
+  },
+  "recipient_actions": 73,
+  "recipient_edits": 37,
+  "recipient_messages": 0,
+  "denied_recipient_edits": 0,
+  "verified_ownership_violation_attempts": 0,
+  "activation_shape": [
+    73,
+    4096
+  ],
+  "activation_dtype": "float32",
+  "positive_labeled_activation_rows": 11,
+  "negative_labeled_activation_rows": 62,
+  "activation_log_alignment_exact": true,
+  "activation_keys_unique": true,
+  "activations_finite_nonzero": true,
+  "post_own_marker_rows": 4,
+  "at_risk_decision_rows": 69,
+  "at_risk_peer_present": {
+    "new_marker_placements": 1,
+    "decisions": 4
+  },
+  "at_risk_peer_absent": {
+    "new_marker_placements": 3,
+    "decisions": 65
+  },
+  "first_marker_round_counts": {
+    "0": 1,
+    "1": 3
+  },
+  "target_conversation_length_distribution": {
+    "1": 3,
+    "2": 29,
+    "3": 4
+  },
+  "no_visible_marker_ask_parent_ids": [
+    8
+  ],
+  "final_parse_failures": 13,
+  "parse_failures_by_role": {
+    "recipient": 3,
+    "source": 10
+  },
+  "truncated_final_parse_failures": 11,
+  "split_group_required": "complete parent swarm episode, including all recipients and decisions",
+  "fanout_monitor_scores_available": false,
+  "historical_capture_configuration_certified_by_export": false,
+  "source_hf_capture_default": "last prompt token before generation; raw decoder layer 18 via hidden_states[19]",
+  "sha256": {
+    "fanout_overt_ticket.jsonl": "345d09d7ea144797c74b6213be3b65d3bb77f100850997a6e9fd669170b11322",
+    "fanout_overt_ticket.npz": "14c2ad3640135e3979b268b9d58ba42d648173fa2d7681267f57e9f059342dae"
+  }
+}

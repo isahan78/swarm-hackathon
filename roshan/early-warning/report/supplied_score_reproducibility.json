@@ -1,0 +1,52 @@
+{
+  "audit_type": "Independent exact-source-parameter probe refit under current local dependencies; no replacement of archived results",
+  "input_archive_sha256": "f63e232a6c3a2ffd9785f169efca90da44c21b05372e544c3628e51ed9fbca80",
+  "source_path": "analysis/probe_eval.py",
+  "source_sha256": "7233c34fe32848914ded8da0b9abf939bc05b31669e4151d61d4c8afa7ee86bb",
+  "source_described_training": "All original70 frozen training episodes, eligible decisions through first marker insertion inclusive",
+  "observed_rows": 204,
+  "observed_training_rows": 106,
+  "observed_training_episodes": 70,
+  "input_dtype": "float32",
+  "input_shape": [
+    204,
+    4096
+  ],
+  "source_archive_score_keys_unique": true,
+  "source_archive_score_key_order_matches_npz": true,
+  "source_archived_train_flags_match_frozen_split": true,
+  "source_archived_pre_action_flags_match_reconstruction": true,
+  "pipeline": "StandardScaler, then LogisticRegression(C=1,max_iter=2000), otherwise current-library defaults",
+  "classifier_defaults_used": {
+    "solver": "lbfgs",
+    "tol": 0.0001,
+    "class_weight": null,
+    "fit_intercept": true,
+    "random_state": null
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scikit_learn": "1.8.0",
+    "scipy": "1.17.0"
+  },
+  "source_native_dtype_refit": {
+    "max_absolute_score_difference_from_supplied": 0.07170204404542213,
+    "mean_absolute_score_difference_from_supplied": 0.0032963406771469293,
+    "first_decision_test_n": 30,
+    "first_decision_test_positive": 14,
+    "archived_first_decision_auroc": 0.8370535714285714,
+    "current_refit_first_decision_auroc": 0.8370535714285714,
+    "refit_minus_archived_first_decision_auroc": 0.0,
+    "n_solver_iterations": [
+      129
+    ]
+  },
+  "float64_diagnostic_only": {
+    "max_absolute_score_difference_from_supplied": 0.1044738976803592,
+    "max_absolute_score_difference_from_native_refit": 0.0585298577006359,
+    "first_decision_test_auroc": 0.8370535714285714,
+    "interpretation": "Checks numerical sensitivity only; not a selected or replacement model"
+  },
+  "conclusion": "Archived supplied probe scores are not exactly reproduced by their described source pipeline under current dependencies. Row identity, frozen train membership and pre-action flags align. Historical runtime and exact fitted artifact are unavailable; cause is unresolved. Archived scores remain unchanged and separately identified. The56-episode refit and its exact0.0 same-runtime transfer reproduction are a different pipeline and are unaffected."
+}

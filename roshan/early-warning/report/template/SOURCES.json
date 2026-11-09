@@ -1,0 +1,26 @@
+{
+  "verified_at_utc": "2026-11-08T20:53:39.890657+00:00",
+  "event_url": "https://apartresearch.com/sprints/swarm-alignment-2026",
+  "official_template_url": "https://docs.google.com/document/d/1_1_27EyZriMlc8n8EBE2YScaeyMjm-8xjR097nmHXAE/copy?usp=sharing",
+  "notes": "Unmodified public Google document exports fetched directly. These are organizer template artifacts, not our project report.",
+  "files": [
+    {
+      "path": "swarm_alignment_official_template.docx",
+      "source_url": "https://docs.google.com/document/d/1_1_27EyZriMlc8n8EBE2YScaeyMjm-8xjR097nmHXAE/export?format=docx",
+      "bytes": 302892,
+      "sha256": "27ec1e4d18f4916554bd2e203acb220f988b848071352c33a66df4d1de932c6a"
+    },
+    {
+      "path": "swarm_alignment_official_template.html",
+      "source_url": "https://docs.google.com/document/d/1_1_27EyZriMlc8n8EBE2YScaeyMjm-8xjR097nmHXAE/export?format=html",
+      "bytes": 29767,
+      "sha256": "eb4306fa1e0617b6f52f6e50b70da9498f66a66e615c10975ba760fbb557001d"
+    },
+    {
+      "path": "swarm_alignment_official_template.pdf",
+      "source_url": "https://docs.google.com/document/d/1_1_27EyZriMlc8n8EBE2YScaeyMjm-8xjR097nmHXAE/export?format=pdf",
+      "bytes": 178490,
+      "sha256": "186e1c35b6249226f0b80e1bf78cc889363ed21535b08ee33dcae9124df222a3"
+    }
+  ]
+}

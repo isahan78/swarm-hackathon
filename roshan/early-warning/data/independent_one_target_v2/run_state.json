@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "completed_episodes": 1,
+  "config": {
+    "run_id": "independent_one_target_v2",
+    "episodes_per_condition": 1,
+    "conditions": [
+      "direct"
+    ],
+    "targets": [
+      "B"
+    ],
+    "steps": 4,
+    "seed": 700001,
+    "permissive": false
+  }
+}

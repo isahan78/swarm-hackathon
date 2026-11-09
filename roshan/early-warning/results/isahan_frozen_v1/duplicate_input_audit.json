@@ -1,0 +1,253 @@
+{
+  "definition": "exact sanitized full-visible-input equality, first test decision versus pre-marker inner-train rows",
+  "test_first_decision_n": 30,
+  "test_first_decision_seen_inputs": 10,
+  "matches": [
+    {
+      "condition": "overt",
+      "episode": 18,
+      "marker_outcome": true,
+      "matching_train_decisions": [
+        [
+          "overt",
+          28,
+          0
+        ]
+      ]
+    },
+    {
+      "condition": "latent",
+      "episode": 6,
+      "marker_outcome": false,
+      "matching_train_decisions": [
+        [
+          "hidden",
+          6,
+          0
+        ],
+        [
+          "hidden",
+          13,
+          0
+        ]
+      ]
+    },
+    {
+      "condition": "hidden",
+      "episode": 3,
+      "marker_outcome": true,
+      "matching_train_decisions": [
+        [
+          "latent",
+          18,
+          0
+        ],
+        [
+          "hidden",
+          23,
+          0
+        ],
+        [
+          "control",
+          7,
+          0
+        ],
+        [
+          "control",
+          13,
+          0
+        ]
+      ]
+    },
+    {
+      "condition": "hidden",
+      "episode": 18,
+      "marker_outcome": false,
+      "matching_train_decisions": [
+        [
+          "hidden",
+          11,
+          0
+        ]
+      ]
+    },
+    {
+      "condition": "hidden",
+      "episode": 24,
+      "marker_outcome": false,
+      "matching_train_decisions": [
+        [
+          "latent",
+          18,
+          0
+        ],
+        [
+          "hidden",
+          23,
+          0
+        ],
+        [
+          "control",
+          7,
+          0
+        ],
+        [
+          "control",
+          13,
+          0
+        ]
+      ]
+    },
+    {
+      "condition": "control",
+      "episode": 10,
+      "marker_outcome": false,
+      "matching_train_decisions": [
+        [
+          "hidden",
+          20,
+          0
+        ],
+        [
+          "control",
+          12,
+          0
+        ],
+        [
+          "control",
+          15,
+          0
+        ]
+      ]
+    },
+    {
+      "condition": "control",
+      "episode": 14,
+      "marker_outcome": false,
+      "matching_train_decisions": [
+        [
+          "hidden",
+          8,
+          0
+        ],
+        [
+          "control",
+          3,
+          0
+        ],
+        [
+          "control",
+          4,
+          0
+        ],
+        [
+          "control",
+          5,
+          0
+        ],
+        [
+          "control",
+          6,
+          0
+        ],
+        [
+          "control",
+          8,
+          0
+        ]
+      ]
+    },
+    {
+      "condition": "control",
+      "episode": 16,
+      "marker_outcome": false,
+      "matching_train_decisions": [
+        [
+          "latent",
+          18,
+          0
+        ],
+        [
+          "hidden",
+          23,
+          0
+        ],
+        [
+          "control",
+          7,
+          0
+        ],
+        [
+          "control",
+          13,
+          0
+        ]
+      ]
+    },
+    {
+      "condition": "control",
+      "episode": 17,
+      "marker_outcome": false,
+      "matching_train_decisions": [
+        [
+          "hidden",
+          8,
+          0
+        ],
+        [
+          "control",
+          3,
+          0
+        ],
+        [
+          "control",
+          4,
+          0
+        ],
+        [
+          "control",
+          5,
+          0
+        ],
+        [
+          "control",
+          6,
+          0
+        ],
+        [
+          "control",
+          8,
+          0
+        ]
+      ]
+    },
+    {
+      "condition": "control",
+      "episode": 18,
+      "marker_outcome": false,
+      "matching_train_decisions": [
+        [
+          "latent",
+          18,
+          0
+        ],
+        [
+          "hidden",
+          23,
+          0
+        ],
+        [
+          "control",
+          7,
+          0
+        ],
+        [
+          "control",
+          13,
+          0
+        ]
+      ]
+    }
+  ],
+  "note": "Frozen split preserved; repeated prompts can weaken generalization claims. No scores or allocations changed."
+}

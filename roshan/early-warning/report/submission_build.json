@@ -1,0 +1,15 @@
+{
+  "format": "Official DOCX reference template, same paper/margins/font sizing",
+  "template_sha256": "27ec1e4d18f4916554bd2e203acb220f988b848071352c33a66df4d1de932c6a",
+  "markdown_sha256": "7c29615f50cf9876e54fe4c330e528f9b68dddd0ce0ddfbe3044386e63ceaf73",
+  "pdf_sha256": "1aeeccc4a2348e657376869fe1fa35e4f06b903ba8bea441d7bf241a6f56dba1",
+  "abstract_words": 211,
+  "main_pages_before_references": 8,
+  "total_pages": 17,
+  "pdf_bytes": 620473,
+  "required_ethics_appendix_present": true,
+  "affiliations_supplied": true,
+  "publication_verified": false,
+  "publication_verification_note": "The PDF build does not check GitHub publication; verify the remote branch separately.",
+  "submission_made": false
+}

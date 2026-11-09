@@ -1,0 +1,34 @@
+--- a/analysis/replay_probe.py
++++ b/analysis/replay_probe.py
+@@ -104,14 +104,24 @@
+     acts = np.stack(acts)
+     if args.validate:
+         d = np.load(args.validate, allow_pickle=True)
+-        stored = {(int(e), int(s)): d["acts"][i]
+-                  for i, (e, s) in enumerate(zip(d["episode"], d["step"]))}
++        stored_agents = (d["agent"] if "agent" in d.files
++                         else np.repeat("Dev-B", len(d["episode"])))
++        stored = {}
++        for i, (e, s, agent) in enumerate(zip(d["episode"], d["step"], stored_agents)):
++            key = (int(e), int(s), str(agent))
++            if key in stored:
++                raise ValueError(f"Duplicate stored activation identity: {key}")
++            stored[key] = d["acts"][i]
+         cos, mad = [], []
+-        for i, (e, s) in enumerate(zip(eps, steps)):
+-            if (e, s) in stored:
+-                a, b = acts[i], stored[(e, s)]
+-                cos.append(float(a @ b / (np.linalg.norm(a) * np.linalg.norm(b))))
+-                mad.append(float(np.max(np.abs(a - b))))
++        for i, (e, s, agent) in enumerate(zip(eps, steps, agents)):
++            key = (int(e), int(s), str(agent))
++            if key not in stored:
++                raise ValueError(f"Missing stored activation identity: {key}")
++            a, b = acts[i], stored[key]
++            cos.append(float(a @ b / (np.linalg.norm(a) * np.linalg.norm(b))))
++            mad.append(float(np.max(np.abs(a - b))))
++        if not cos:
++            raise ValueError("No matched replay vectors")
+         cos, mad = np.array(cos), np.array(mad)
+         print(f"VALIDATION vs {args.validate}: {len(cos)} matched vectors")
+         print(f"  cosine: min {cos.min():.6f}  mean {cos.mean():.6f}")
