@@ -103,6 +103,12 @@ owner predicts HIDDEN with a ~4-step latent lead. The data decides.)
   AUCs excluding the 3 no-ask episodes — probe 0.69 ± 0.17, text 0.75 ± 0.16
   (from 0.74/0.79) — the probe-does-not-win-hidden conclusion is robust to
   removing the episodes that hand the text monitor free signal.
+- 2026-11-09 (logged in pre-submission review, for completeness): the frozen
+  knob "held-out split: by objective/task" could not be applied — the study
+  has a single objective — so all splits are episode-level random splits
+  (stratified by condition x label for the frozen 70/30). Also noted: the
+  overt "probe wins" fraction in Table 1 varies by environment (80-84%
+  across scikit-learn versions; 82% reported). No conclusion changes.
 - 2026-11-07 (tuning outcome, logged for transparency): justification tier frozen at
   'ticket' after 3 sweeps (bare: 0, reason: 0/24, authority: 1/20 genuine, ticket:
   2/12). Observed during tuning, before the full run: hidden recruits hardest
