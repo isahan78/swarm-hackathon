@@ -86,5 +86,5 @@ rebuilt from logged transcripts reproduce the stored activations exactly
 independent re-analysis ([roshan/early-warning/](roshan/early-warning/))
 confirms the direction and finds the probe does not transfer to the group
 setting. Full tables: [docs/results.md](docs/results.md) · report:
-[docs/report.docx](docs/report.docx) · pre-registration + deviations:
+[docs/report.docx](docs/report.docx) ([PDF](docs/report.pdf)) · pre-registration + deviations:
 [docs/plan/prereg.md](docs/plan/prereg.md).
