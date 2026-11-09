@@ -6,6 +6,11 @@ suspicious shows up in the transcript?**
 A project for the [Apart Research Swarm Alignment Hackathon](https://apartresearch.com/sprints/swarm-alignment-2026)
 (November 2026), Track 4: Oversight & Monitoring.
 
+**Authors:** Isahan Khan and Roshan Ram (both Independent). *This work was conducted
+independently by both authors in a personal capacity. It is not affiliated with,
+sponsored by, or endorsed by either author's employer, and the views expressed are
+the authors' own, not those of their employers.*
+
 ## The idea
 
 In a two-agent swarm, **Dev-A** wants an inert marker line (`# build-tag: QX7`)
