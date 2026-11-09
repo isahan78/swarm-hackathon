@@ -2,6 +2,8 @@
 *.m4a
 *.mp4
 *.vtt
+# ...except the presentation video, which is a deliverable
+!presentation/*.mp4
 *RecordingnewChat.txt
 
 # Downloaded / untrusted data and generated outputs
