@@ -2,11 +2,13 @@
 
 *Research conducted at the Swarm Alignment Hackathon, November 2026.*
 
-**Authors:** Isahan Khan (independent), Roshan R. (affiliation TBD). With Apart Research.
+**Authors:** Isahan Khan (Independent), Roshan Ram (Independent). With Apart Research.
 
-> DRAFT in the official template's structure. Pour into the Google Doc/PDF
-> template for submission. Recommended length 4 pages excl. references +
-> appendix; swarm fan-out results pending the run in progress.
+> **Superseded early draft — not the submitted report.** The submitted report is
+> [`report.docx`](report.docx) ([PDF](report.pdf)). Several claims and numbers
+> below predate later corrections (for example the "probe catches recruitment
+> before the transcript can" framing, which the final report scopes as a
+> non-significant ranking lead). Kept for history only.
 
 ## Abstract
 
