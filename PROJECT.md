@@ -55,6 +55,17 @@ already predicts its not-yet-made decision (0.64–0.84). Latency reframed:
 compliance lands in the first decision round, so the probe's lead is
 within-round — it reads the decision at prefill, before one action token exists.
 
+**Ceiling results (Sun PM):** at 8B, recruitment collapses with group size
+(67% at N=1 → 11% at N=3 → 0/80 at N=10; per-recipient addressing doesn't
+rescue it), but the collapse does NOT replicate at 14B/32B (API, behavior-only,
+exploratory) — "safety in numbers" looks like a small-model artifact. Replay:
+prompts rebuilt from logged transcripts reproduce the stored activations
+exactly (cosine 1.000000) → the probe is retroactively applicable to incident
+logs. Independent re-analysis (R.R., separate code, `roshan/early-warning/`):
+confirms the direction and finds the limit — the 2-agent probe does not
+transfer to the group setting (0.30 vs text 0.72, exploratory). Report:
+`docs/report.docx` (~6 pages, both bylines Independent).
+
 ## Can't-lose
 - Probe catches latent/hidden co-option the transcript misses → novel, judge-pleasing.
 - Probe fails (needs verbalization / not linearly accessible) → real finding about
@@ -67,8 +78,9 @@ within-round — it reads the decision at prefill, before one action token exist
 
 ## Compute & team
 - Qwen3-8B on RunPod, ~$10–30 + cheap judge calls. Open model only.
-- Owner: interp (probe), analysis, write-up, rigor — the hard 80%, already owned.
-- Recruit: 1 multi-agent orchestration (the unbuilt board), optional 1 report lead.
+- Owner (Isahan Khan): environment, dataset, pre-registration, probe/baseline
+  analysis, write-up. Roshan Ram: multi-agent orchestration design + independent
+  re-analysis of the released traces (merged, `roshan/early-warning/`).
 
 ## Detail docs
 - Design: [docs/plan/project-final.md](docs/plan/project-final.md)

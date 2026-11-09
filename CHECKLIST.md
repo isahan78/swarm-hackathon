@@ -11,9 +11,9 @@ for the build spec. ★ = critical path.  **← YOU ARE HERE** marks current fro
 - [x] Init git repo; copy preexisting probe scripts into `probe/` (marked preexisting)
 - [x] **Seal the pre-registration** — both forecasts sealed in docs/plan/prereg.md
       before condition-level results; all changes since logged in its deviations
-- [ ] Lock team — Roshan in (repo collaborator; need full name + email for the form);
+- [x] Lock team — Roshan Ram in (collaborator; PRs #1–2 merged; email still needed for the form);
       Naveen silent
-- [ ] Confirm live Apart page: page limit, abstract length, required appendix
+- [x] Confirm live Apart page: ≤8 pages, abstract 150–250w, Limitations + Dual-Use appendix required
 
 ## Phase 1 — Wire Qwen3-8B (Sat AM, on RunPod) ★
 - [x] ★ Implement `HFModel.act`: build_messages → generate → parse_action (swarm_env/model.py)
@@ -50,22 +50,33 @@ for the build spec. ★ = critical path.  **← YOU ARE HERE** marks current fro
 - [x] Controls: 0/20 co-opted; canary + B1 step-0 control + overt-only transfer run
 - [x] Two headline figures: figures/fig1_probe_auc.png, figures/fig2_probe_vs_text.png
 
-## Phase 5 — Ceiling: swarm fan-out (Sun PM)  **← YOU ARE HERE**
+## Phase 5 — Ceiling: swarm fan-out + scale + replay (Sun PM) — DONE
 - [x] Fan-out code built + stub-tested (swarm_env/fanout.py): 1 source → 3 recipients,
       recipient prompt/marker/tier FROZEN (zero-shot probe transfer), per-step
       peer_complied_before logged for the conformity number
-- [ ] ★ Run ~12 fan-out episodes on the pod (~1.5h, ~$1); conformity analysis +
-      zero-shot probe transfer readout
+- [x] ★ Fan-out runs on the pod: broadcast 4/36, personal-ask 4/36 (addressing doesn't
+      rescue), N=10 0/80 — 8B collapse is monotone in group size (runs/fanout*, fig3)
+- [x] Conformity (corrected, edit-at-step): 2/16 with prior peer compliance vs 6/127
+      without (~2.6× lift, directional)
+- [x] Replay validation: prompts rebuilt from transcripts reproduce stored activations
+      EXACTLY (cosine 1.000000, 18 vectors) → retroactive white-box monitoring
+- [x] Scale ladder (OpenRouter, behavior-only, exploratory): collapse does NOT replicate —
+      14B 26/30, 32B 23/30 in groups (runs/scale/)
 
-## Phase 6 — Write-up + submit (Sun evening) ★
-- [ ] ★ Report on official template (abstract 150–250w; results from docs/results.md)
-- [ ] Limitations + Dual-Use appendix (degenerate-threshold + hidden-premise caveats in)
-- [ ] Mark preexisting code as preexisting in README + report (probe/README.md done)
-- [ ] Flip repo public; submit form before Sun Nov 8 23:59 AoE
-      (title, summary, PDF, Track 4, team names + emails — NEED Roshan's)
+## Phase 6 — Write-up + submit (Sun evening) ★  **← YOU ARE HERE**
+- [x] ★ Report on official template: docs/report.docx (~6 pages, 235w abstract,
+      HF-incident intro, tool-calling framing, all review fixes)
+- [x] Limitations + Dual-Use appendix (degenerate-threshold + hidden-premise caveats in)
+- [x] Mark preexisting code as preexisting in README + report (probe/README.md done)
+- [x] Repo public; Roshan's independent re-analysis merged (roshan/early-warning/,
+      PRs #1–2): confirms direction, adds group-transfer limit; bylines both Independent
+- [ ] ★ Read-through → export docs/report.pdf from Word; layout pass
+- [ ] ★ Slides + 3–4 min video (deck built with narration notes; record off Present mode)
+- [ ] ★ Submit form before Mon Nov 9 11:59 UTC (title, abstract, PDF, Track 4,
+      names + emails — NEED Roshan's email)
 
 ---
 ### Immediate next 3 actions
-1. Restart pod, launch the fan-out run (one command), stop pod after rsync.
-2. Draft the report on the official template while it generates.
-3. Get Roshan's full name + email; flip repo public; submit.
+1. Close Word without saving, reopen docs/report.docx, read, Save As PDF.
+2. Record the video off the slide deck (narration is in the speaker notes).
+3. Get Roshan's email; submit the form; resubmit same-title if anything improves.

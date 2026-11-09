@@ -142,8 +142,38 @@ co-option earlier than a transcript monitor?* Four parts:
   hand the text monitor free signal). Figures 1 + 2 committed.
 - **Swarm fan-out built** (`swarm_env/fanout.py`): 1 source → 3 recipients, recipient
   prompt byte-identical (name/file substitution only) for zero-shot probe transfer,
-  `peer_complied_before` logged per step for the conformity number. Stub-tested;
-  awaiting the ~$1 pod run.
+  `peer_complied_before` logged per step for the conformity number. Stub-tested.
+
+### 2026-11-08 evening — fan-out, scale, replay, report, merge
+- **Fan-out ran on the pod**: broadcast 4/36 recipients co-opted, personal-ask arm
+  4/36 (per-recipient addressing does not rescue recruitment), N=10 arm 0/80.
+  At 8B, recruitment collapses monotonically with group size: 67% → 11% → 0%
+  (fig3, Wilson intervals). Conformity (corrected to edit-at-step counting):
+  2/16 with a prior visible peer compliance vs 6/127 without (~2.6× lift,
+  directional, confounded with episode difficulty).
+- **Replay validation** (`analysis/replay_probe.py --validate`): prompts rebuilt
+  purely from logged transcripts, re-run through the same weights on the pod,
+  reproduce the stored activations EXACTLY (cosine 1.000000, max diff 0.0,
+  18 vectors) → white-box monitoring is retroactively applicable to incident
+  logs given weights + matching inference setup.
+- **Scale ladder** (OpenRouter, behavior-only, exploratory): the 8B group-size
+  collapse does NOT replicate upward — 14B: 6/10 alone, 26/30 in groups;
+  32B: 10/10 alone, 23/30 in groups ("safety in numbers" looks like a
+  small-model artifact). qwen3-8b itself was delisted from OpenRouter, so
+  same-model API replay was impossible; cells are small and labeled exploratory.
+- **Report built** (`docs/report.docx`, ~6 pages): plain-language 235-word
+  abstract, Introduction opens from the Hugging Face incident, co-option framed
+  as an unsanctioned tool call, all 8 pre-submission review fixes (including the
+  56/58 → 42/46 correction, logged in prereg deviations).
+- **Roshan's independent re-analysis merged** (PRs #1–2, `roshan/early-warning/`):
+  separately written code confirms the direction (probe 0.75 vs stronger text
+  baseline 0.61 on a restricted frozen-split comparison; interval crosses zero)
+  and finds the limit — the 2-agent probe does NOT transfer to the 3-recipient
+  group setting (AUROC 0.30 vs text 0.72, 4 positives, exploratory). His edits
+  to the shared report: softened "near chance" wording, compliance-not-violation
+  label clarification, both bylines Independent, new re-analysis paragraph.
+  Also: a key-collision fix proposed for replay_probe.py fan-out validation
+  (our 2-agent validation unaffected) and a clean prereg deviation entry.
 
 ## 5. To-do (weekend plan)
 - [x] Design the task + hidden objective (the unsanctioned marker).
@@ -155,9 +185,9 @@ co-option earlier than a transcript monitor?* Four parts:
 - [x] Faithfulness measured (structural analysis: ask visible everywhere, Dev-B silent).
 - [x] Train probe (frozen episode split) + run trained transcript monitor.
 - [x] Analysis: paired head-to-head; within-round latency reframe. Two figures.
-- [ ] CEILING: fan-out run (code built + stub-tested; needs the ~$1 pod run).
-- [ ] Report on official template + Limitations/Dual-Use appendix; mark preexisting code.
-- [ ] Submit before Sun 23:59 AoE.
+- [x] CEILING: fan-out runs (broadcast / personal / N=10) + conformity + replay + scale ladder.
+- [x] Report on official template + Limitations/Dual-Use appendix; preexisting code marked.
+- [ ] Export PDF, record video off the slide deck, submit before Mon Nov 9 11:59 UTC.
 
 ## 6. Risks
 - R1. Activation capture in a multi-step loop is new integration (owner's prior work was single-pass). Mitigate: do it fresh, one layer first.
@@ -165,8 +195,9 @@ co-option earlier than a transcript monitor?* Four parts:
 - R3. Orchestration teammate is parallelism, not survival; owner can build the board.
 - R4. Hackathon n may not support tight CIs → spend runs on the one headline comparison.
 
-## 7. Submission checklist (from rules.md — confirm on live Apart page)
-- [ ] Official template; ≤ ~8 pages; abstract 150–250 words.
-- [ ] Required Limitations + Dual-Use / Ethical appendix.
-- [ ] Preexisting code marked as preexisting in README + report.
-- [ ] Form: title, summary, PDF, Track 4, team name, member names + emails.
+## 7. Submission checklist (from rules.md — confirmed on live Apart page)
+- [x] Official template; ≤ ~8 pages (report is ~6); abstract 150–250 words (235).
+- [x] Required Limitations + Dual-Use / Ethical appendix.
+- [x] Preexisting code marked as preexisting in README + report.
+- [ ] Slides + 3–4 min video (deck built with narration in speaker notes; record + export).
+- [ ] Form: title, summary, PDF, Track 4, team name, member names + emails (need Roshan's).

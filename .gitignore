@@ -31,3 +31,8 @@ docs/talks/
 docs/overview.md
 docs/README.md
 ~$*.docx
+
+# Local agent tooling (not project work)
+_bmad/
+_bmad-output/
+.claude/

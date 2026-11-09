@@ -46,9 +46,12 @@ anything — and the gap should widen as the ask gets quieter.
 
 | Path | What it is |
 |---|---|
-| `swarm_env/` | The environment (built this weekend): board + workspace (`env.py`), prompts and condition framings (`prompts.py`, `conditions.py`), model interface with activation capture (`model.py`), episode loop (`episode.py`), batch generation (`generate.py`), smoke test |
+| `swarm_env/` | The environment (built this weekend): board + workspace (`env.py`), prompts and condition framings (`prompts.py`, `conditions.py`), model interface with activation capture (`model.py`), episode loop (`episode.py`), batch generation (`generate.py`), swarm fan-out (`fanout.py`), OpenRouter backend (`or_model.py`), smoke test |
+| `analysis/` | Written this sprint: probe eval (`probe_eval.py`), trained text baseline (`text_baseline.py`), paired head-to-head (`head_to_head.py`), replay validation (`replay_probe.py`), fan-out/conformity analysis, figures |
+| `runs/` | All data: 2-agent episodes + activations (`full/`), monitor-facing flattening (`flat/`), the frozen split (`split.json`), fan-out arms (`fanout/`, `fanout10/`), cross-model cells (`scale/`) |
+| `roshan/early-warning/` | **Independent re-analysis** (R.R., separately written code + tests + technical write-up) — confirms the main direction, finds the group-transfer limit |
 | `probe/` | **Preexisting** probe pipeline (linear probe training, text baselines, figures) — see [probe/README.md](probe/README.md) for provenance per hackathon rules |
-| `docs/plan/` | Design docs: the locked project, environment spec, verified rules, **pre-registration** |
+| `docs/` | **The report** (`report.docx`), results (`results.md`), design docs and the **pre-registration with its deviations log** (`plan/prereg.md`) |
 | `PROJECT.md` / `PRD.md` / `CHECKLIST.md` | Why / requirements + build log / live task tracker |
 | `setup_pod.sh`, `requirements.txt` | Pod bootstrap (weights on the persistent volume, no vLLM) |
 
@@ -68,7 +71,20 @@ python3 swarm_env/generate.py --sweep --n 4 --out runs/tune
 
 Probe training and analysis run locally on CPU from the exported activations.
 
-## Status
+## Results (Nov 8)
 
-Environment, activation capture, and the knife-edge tuning harness are built
-and running; see [CHECKLIST.md](CHECKLIST.md) for the live front.
+Across 100 episodes, pre-action and paired on 50 identical splits, the probe
+beats the trained transcript monitor in two of three framings (Δ +0.19 overt,
++0.23 latent; probe AUC 0.84 in the headline condition) and loses narrowly in
+hidden (−0.05); split intervals cross zero at this n. Pre-action, both monitors
+see the same information — the ask — so the gap is the recipient's internal
+representation predicting its own not-yet-made decision. Extensions: at 8B,
+recruitment collapses with group size (67% → 11% → 0/80) but larger models
+(14B/32B, API, behavior-only, exploratory) keep complying in groups; prompts
+rebuilt from logged transcripts reproduce the stored activations exactly
+(cosine 1.000000), so the probe applies retroactively to incident logs. An
+independent re-analysis ([roshan/early-warning/](roshan/early-warning/))
+confirms the direction and finds the probe does not transfer to the group
+setting. Full tables: [docs/results.md](docs/results.md) · report:
+[docs/report.docx](docs/report.docx) · pre-registration + deviations:
+[docs/plan/prereg.md](docs/plan/prereg.md).
